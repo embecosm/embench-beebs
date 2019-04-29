@@ -1,0 +1,29 @@
+# Makefile.am for building a BEEBS benchmark
+#
+# Copyright (C) 2013 Embecosm Limited and University of Bristol
+#
+# This file is part of the Bristol/Embecosm Embedded Benchmark Suite.
+#
+# Contributor: James Pallister <james.pallister@bristol.ac.uk>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+if ENABLED_BENCHMARK_SGLIB_DLLIST
+
+include $(top_srcdir)/src/common.mk.am
+
+bin_PROGRAMS               = sglib-dllist
+noinst_LTLIBRARIES         = libsglib-dllist.la
+
+sglib_dllist_SOURCES       =
+libsglib_dllist_la_SOURCES = dllist.c sglib.h
+
+sglib_dllist_LDADD         = $(DUMMY_CRT0) \
+                             $(top_builddir)/support/libsupport.la \
+                             libsglib-dllist.la \
+                             $(top_builddir)/support/libbeebsc.la \
+                      $(DUMMY_LIBC) $(DUMMY_LIBGCC) $(DUMMY_COMPILERRT)
+
+
+
+endif
