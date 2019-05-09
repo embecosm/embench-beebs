@@ -1,3 +1,11 @@
+2019-05-09  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	Provide a more appropriate README.
+
+	* README: Renamed to README.md.
+	* README.md: Renamed from README and updated with details
+	appropriate to Embench.
+
 2019-04-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	Initial commit as a snapshot from the main BEEBS repo at
