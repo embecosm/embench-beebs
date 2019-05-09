@@ -53,7 +53,7 @@ benchmark ()
   volatile int cnt;
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); j++)
+  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
     {
       int i, ai, aj, n;
       int a[MAX_PARAMS];

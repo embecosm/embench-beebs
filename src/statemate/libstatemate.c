@@ -1435,7 +1435,7 @@ benchmark (void)
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       memset (Bitlist, 0, 64 * sizeof (Bitlist[0]));
       init ();

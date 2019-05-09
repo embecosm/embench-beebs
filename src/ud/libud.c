@@ -133,7 +133,7 @@ benchmark()
 {
   int  k;
 
-  for (k = 0; k < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); k++)
+  for (k = 0; k < (LOCAL_SCALE_FACTOR * CPU_MHZ); k++)
     {
       int      i, j, nmax = 20, n = 5;
       long int /* eps, */ w;

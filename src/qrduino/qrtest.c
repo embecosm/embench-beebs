@@ -35,7 +35,7 @@ benchmark (void)
   static const char *in_encode = "http://www.mageec.com";
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       encode = in_encode;
       size = 22;

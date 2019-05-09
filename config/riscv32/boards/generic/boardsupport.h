@@ -8,4 +8,4 @@
 
    SPDX-License-Identifier: GPL-3.0-or-later */
 
-#define BOARD_REPEAT_FACTOR 32
+#define CPU_MHZ 1

@@ -348,13 +348,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@CALIBRATION_FALSE@@ENABLED_BENCHMARK_MINVER_TRUE@calib = echo 0
-@CALIBRATION_TRUE@@ENABLED_BENCHMARK_MINVER_TRUE@calib = (egrep "^\b$(bin_PROGRAMS)\b" \
-@CALIBRATION_TRUE@@ENABLED_BENCHMARK_MINVER_TRUE@	        $(top_srcdir)/config/@ARCH@/boards/@BOARD@/calibration \
-@CALIBRATION_TRUE@@ENABLED_BENCHMARK_MINVER_TRUE@		|| echo "0 0") | cut -d " " -f 2
-
-@ENABLED_BENCHMARK_MINVER_TRUE@AM_CPPFLAGS = "-DCALIB_SCALE=$(shell $(calib))" \
-@ENABLED_BENCHMARK_MINVER_TRUE@              -I $(top_srcdir)/support \
+@ENABLED_BENCHMARK_MINVER_TRUE@AM_CPPFLAGS = -I $(top_srcdir)/support \
 @ENABLED_BENCHMARK_MINVER_TRUE@              -I $(top_srcdir)/config/@ARCH@/boards/@BOARD@ \
 @ENABLED_BENCHMARK_MINVER_TRUE@              -I $(top_srcdir)/config/@ARCH@/chips/@CHIP@ \
 @ENABLED_BENCHMARK_MINVER_TRUE@              @CPPFLAGS@

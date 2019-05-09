@@ -164,7 +164,7 @@ benchmark ()
 {
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); j++)
+  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
     {
       int i;
       offset_momentum (solar_bodies, BODIES_SIZE);

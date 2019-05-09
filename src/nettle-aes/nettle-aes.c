@@ -1140,7 +1140,7 @@ benchmark (void)
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       aes_set_encrypt_key (&encctx, 32, key);
       aes_encrypt (&encctx, LEN, encrypted, plaintext);

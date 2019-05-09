@@ -47,7 +47,7 @@ benchmark ()
   volatile int cnt;
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     cnt = tarai (x, y, z);
 
   return cnt;

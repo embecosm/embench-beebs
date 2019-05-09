@@ -76,7 +76,7 @@ benchmark ()
 {
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); j++)
+  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
     {
       P1_is_marked = 3;
       P2_is_marked = 5;

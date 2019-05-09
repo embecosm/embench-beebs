@@ -574,7 +574,7 @@ benchmark ()
   volatile int ret;
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); j++)
+  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
     {
       int i;
       int len = strlen (text);

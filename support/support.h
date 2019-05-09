@@ -24,34 +24,6 @@
 #include "boardsupport.h"
 #endif
 
-/* Board repeat factor may be set in the board support header, if not, we
-   define a default */
-
-#ifndef BOARD_REPEAT_FACTOR
-#define BOARD_REPEAT_FACTOR 4096
-#endif
-
-/* Include chip support header if we have one */
-
-#ifdef HAVE_CHIPSUPPORT_H
-#include "chipsupport.h"
-#endif
-
-/* Scaling factors may defined when compiling benchmarks. If not we set it to
-   zero, which means no scaling and then leads to the REPEAT_FACTOR for the
-   program. */
-
-#ifndef CALIB_SCALE
-#define CALIB_SCALE 0
-#endif
-
-// The overall repeat factor is scaled by the command-line given
-// CALIB_SCALE.
-
-#define REPEAT_FACTOR (((CALIB_SCALE) > 0)                         \
-                       ? (BOARD_REPEAT_FACTOR) >> (CALIB_SCALE)    \
-		       : (BOARD_REPEAT_FACTOR) << (-CALIB_SCALE))
-
 /* Benchmarks must implement verify_benchmark, which must return -1 if no
    verification is done. */
 

@@ -66,7 +66,7 @@ benchmark ()
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       memcpy (array2, array, 100 * sizeof (array[0]));
       SGLIB_ARRAY_SINGLE_QUICK_SORT (int, array2, 100,

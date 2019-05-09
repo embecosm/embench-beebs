@@ -172,7 +172,7 @@ benchmark ()
   int i;
   DWORD r;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       srand_beebs (0);
       r = crc32pseudo ();

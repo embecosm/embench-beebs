@@ -205,7 +205,7 @@ benchmark ()
   int i;
   int errors;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       uint64 a, b, m, hr, p1hi, p1lo, p1, p, abar, bbar;
       uint64 phi, plo;

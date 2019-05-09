@@ -251,7 +251,7 @@ These are combined into the general header 'support.h' which is included
 by all benchmarks, and defines values which may be used by the
 benchmarks.  The values that may be defined are:
 
-'BOARD_REPEAT_FACTOR'
+'CPU_MHZ'
      Controls how often the tests are run, at a coarse granularity.
      Fast boards may need a larger value, small boards a smaller value.
      Default value 4096.
@@ -303,7 +303,7 @@ factor (separated by a space).
 The numbers are used in the following expression to compute the number
 of runs:
 
-     (BOARD_REPEAT_FACTOR >> scale) >> extra
+     (CPU_MHZ >> scale) >> extra
 
 In this code snippet, 'scale' is the entry in the calibration file, and
 'extra' is an extra scale factor specified in the source code file.  The
@@ -805,7 +805,7 @@ Index
 * boardsupport.h:                        Header files.         (line  6)
 * BOARD_CFLAGS:                          Configuration files.  (line 17)
 * BOARD_CFLAGS <1>:                      Configuration files.  (line 23)
-* BOARD_REPEAT_FACTOR:                   Header files.         (line 16)
+* CPU_MHZ:                   Header files.         (line 16)
 * bugs:                                  Known Issues.         (line  6)
 * building BEEBS:                        Building.             (line  6)
 * Calibration:                           Calibration.          (line  6)

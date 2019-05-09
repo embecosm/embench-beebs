@@ -74,7 +74,7 @@ benchmark ()
   volatile int answer = 0;
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       /* a = [1..30] b = [1..30] */
       answer = 0;

@@ -282,7 +282,7 @@ benchmark (void)
 {
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); j++)
+  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
     {
       short unsigned int in_a[200] = {
 	0x0000, 0x07ff, 0x0c00, 0x0800, 0x0200, 0xf800, 0xf300, 0x0400,

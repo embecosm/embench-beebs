@@ -449,7 +449,7 @@ benchmark (void)
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       memset (buffer, 0, sizeof (buffer));
       struct sha256_ctx ctx;

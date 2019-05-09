@@ -75,7 +75,7 @@ benchmark ()
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * REPEAT_FACTOR); i++)
+  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
     {
       memcpy (ArrayA, ArrayA_ref,
 	      UPPERLIMIT * UPPERLIMIT * sizeof (ArrayA[0][0]));

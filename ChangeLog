@@ -1,5 +1,97 @@
 2019-05-09  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	A general simplification of the benchmark wide scaling.
+
+	We get rid of CALIB_SCALE (benchmark specific calibration for
+	particular benchmarks on particular boards). We also replace
+	BOARD_REPEAT_FACTOR with CPU_MHZ (a board parameter).  There is
+	then no need to compute REPEAT_FACTOR in support.h, we can just
+	use CPU_MHz in the benchmarks.
+
+	* .gitignore: Created.
+	* README: Created as symbolic link to README.md to keep autotools
+	happy.
+	* config/riscv32/boards/generic/boardsupport.h: Change
+	BOARD_REPEAT_FACTOR to CPU_MHZ and give value 1.
+	* config/riscv32/boards/picorv32verilator/boardsupport.h:
+	Likewise.
+	* config/riscv32/boards/ri5cyverilator/boardsupport.h: Change
+	BOARD_REPEAT_FACTOR to CPU_MHZ.
+	* doc/beebs.info: Regenerated.
+	* doc/beebs.texi: Change BOARD_REPEAT_FACTOR to CPU_MHZ.
+	* src/aha-mont64/Makefile.in: Regenerated.
+	* src/aha-mont64/mont64.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/common.mk.am: Remove calibration calculation and definition
+	of CALIB_SCALE.
+	* src/crc32/Makefile.in: Regenerated.
+	* src/crc32/crc_32.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/cubic/Makefile.in: Regenerated.
+	* src/cubic/basicmath_small.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/edn/Makefile.in: Regenerated.
+	* src/edn/libedn.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/janne_complex/Makefile.in: Regenerated.
+	* src/janne_complex/libjanne_complex.c (benchmark): Change
+	REPEAT_FACTOR to CPU_MHZ.
+	* src/matmult-int/Makefile.in: Regenerated.
+	* src/matmult-int/matmult-int.c (benchmark): Change REPEAT_FACTOR
+	to CPU_MHZ.
+	* src/minver/Makefile.in: Regenerated.
+	* src/minver/libminver.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/nbody/Makefile.in: Regenerated.
+	* src/nbody/nbody.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/nettle-aes/Makefile.in: Regenerated.
+	* src/nettle-aes/nettle-aes.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/nettle-sha256/Makefile.in: Regenerated.
+	* src/nettle-sha256/nettle-sha256.c (benchmark): Change
+	REPEAT_FACTOR to CPU_MHZ.
+	* src/nsichneu/Makefile.in: Regenerated.
+	* src/nsichneu/libnsichneu.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/picojpeg/Makefile.in: Regenerated.
+	* src/picojpeg/picojpeg_test.c (benchmark): Change REPEAT_FACTOR
+	to CPU_MHZ.
+	* src/qrduino/Makefile.in: Regenerated.
+	* src/qrduino/qrtest.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/sglib-arrayquicksort/Makefile.in: Regenerated.
+	* src/sglib-arrayquicksort/arrayquicksort.c (benchmark): Change
+	REPEAT_FACTOR to CPU_MHZ.
+	* src/sglib-dllist/Makefile.in: Regenerated.
+	* src/sglib-dllist/dllist.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/sglib-hashtable/Makefile.in: Regenerated.
+	* src/sglib-hashtable/hashtable.c (benchmark): Change
+	REPEAT_FACTOR to CPU_MHZ.
+	* src/sglib-queue/Makefile.in: Regenerated.
+	* src/sglib-queue/queue.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/sglib-rbtree/Makefile.in: Regenerated.
+	* src/sglib-rbtree/rbtree.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/slre/Makefile.in: Regenerated.
+	* src/slre/libslre.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/st/Makefile.in: Regenerated.
+	* src/st/libst.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/statemate/Makefile.in: Regenerated.
+	* src/statemate/libstatemate.c (benchmark): Change REPEAT_FACTOR
+	to CPU_MHZ.
+	* src/tarai/Makefile.in: Regenerated.
+	* src/tarai/libtarai.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* src/ud/Makefile.in: Regenerated.
+	* src/ud/libud.c (benchmark): Change REPEAT_FACTOR to CPU_MHZ.
+	* src/wikisort/Makefile.in: Regenerated.
+	* src/wikisort/libwikisort.c (benchmark): Change REPEAT_FACTOR to
+	CPU_MHZ.
+	* support/support.h: Remove all calculation of REPEAT_FACTOR,
+	which is replaced by a single figure, CPU_MHZ.
+
+2019-05-09  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	Provide a more appropriate README.
 
 	* README: Renamed to README.md.
