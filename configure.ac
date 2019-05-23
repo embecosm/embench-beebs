@@ -472,6 +472,19 @@ case "${USE_DUMMY_LIBM}" in
    *)   DUMMY_LIBM=${USE_DUMMY_LIBM} ;;
 esac
 
+# Control warmup
+
+AC_ARG_ENABLE([warmup],
+  [AS_HELP_STRING([--enable-warmup],
+     [Enable warmup])],
+  [case "${enableval}" in
+      yes) AC_DEFINE([WARMUP_HEAT],[3],[How much warmup is needed]) ;;
+      no)  AC_DEFINE([WARMUP_HEAT],[0],[How much warmup is needed]) ;;
+      *)   AC_DEFINE_UNQUOTED([WARMUP_HEAT],
+      	[${enableval}],[How much warmup is needed]) ;;
+   esac],
+  [AC_DEFINE([WARMUP_HEAT],[1],[How much warmup is needed])])
+
 # Check for support code
 
 AM_CONDITIONAL([CHIPSUPPORT_C],
@@ -484,14 +497,6 @@ test -f $srcdir/config/$arch/boards/$board/boardsupport.h && \
 
 test -f $srcdir/config/$arch/chips/$chip/chipsupport.h && \
     AC_DEFINE([HAVE_CHIPSUPPORT_H], [1], [Chip support header is present])
-
-# Test whether we have a calibration file
-
-test -f $srcdir/config/$arch/boards/$board/calibration && \
-    HAVE_CALIBRATION=yes && \
-    AC_DEFINE([HAVE_CALIBRATION], [1], [Calibration file is present])
-
-AM_CONDITIONAL([CALIBRATION], [test x$HAVE_CALIBRATION == xyes])
 
 # Architecture, board and chip specific and user CFLAGS and LDFLAGS. Note that
 # we always compile with debug info, although this can be overridden by
@@ -531,8 +536,6 @@ AC_SUBST([DUMMY_LIBM])
 AC_SUBST(ARCH, $arch)
 AC_SUBST(BOARD, $board)
 AC_SUBST(CHIP, $chip)
-
-AM_CONDITIONAL([ARC], [test x$arch = xarc])
 
 # Substitute DejaGnu variable
 

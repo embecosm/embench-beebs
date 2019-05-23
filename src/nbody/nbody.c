@@ -159,12 +159,30 @@ initialise_benchmark (void)
 
 
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
+  for (j = 0; j < rpt; j++)
     {
       int i;
       offset_momentum (solar_bodies, BODIES_SIZE);

@@ -15,15 +15,11 @@ noinst_LTLIBRARIES = libbeebsc.la    \
                      libdummym.la    \
 		     libsupport.la
 
-if ARC
-  MAYBE_ARC_MILLICODE=arc-millicode.S
-endif
-
 libbeebsc_la_SOURCES    = beebsc.c \
 			  beebsc.h
 
 libdummycrt0_la_SOURCES = dummy-crt0.c
-libdummygcc_la_SOURCES  = dummy-libgcc.c $(MAYBE_ARC_MILLICODE)
+libdummygcc_la_SOURCES  = dummy-libgcc.c
 libdummyc_la_SOURCES    = dummy-libc.c
 libdummym_la_SOURCES    = dummy-libm.c
 

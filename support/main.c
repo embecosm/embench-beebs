@@ -13,9 +13,6 @@
 #include "support.h"
 
 
-extern int initialise_benchmark (void);
-extern int verify_benchmark (int unused);
-
 int
 main (int argc __attribute__ ((unused)),
       char *argv[] __attribute__ ((unused)))
@@ -26,6 +23,7 @@ main (int argc __attribute__ ((unused)),
 
   initialise_board ();
   initialise_benchmark ();
+  warm_caches (WARMUP_HEAT);
 
   start_trigger ();
   result = benchmark ();

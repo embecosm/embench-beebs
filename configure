@@ -638,8 +638,6 @@ LTLIBOBJS
 LIBOBJS
 BENCHMARKS
 DEJAGNU
-ARC_FALSE
-ARC_TRUE
 CHIP
 BOARD
 ARCH
@@ -694,8 +692,6 @@ LDFLAGS
 CFLAGS
 CC
 LIBTOOL
-CALIBRATION_FALSE
-CALIBRATION_TRUE
 CHIPSUPPORT_C_FALSE
 CHIPSUPPORT_C_TRUE
 ENABLED_BENCHMARK_WIKISORT_FALSE
@@ -857,6 +853,7 @@ enable_benchmark_statemate
 enable_benchmark_tarai
 enable_benchmark_ud
 enable_benchmark_wikisort
+enable_warmup
 enable_shared
 enable_static
 with_pic
@@ -1547,6 +1544,7 @@ Optional Features:
   --enable-benchmark-ud   Enable benchmark ud
   --enable-benchmark-wikisort
                           Enable benchmark wikisort
+  --enable-warmup         Enable warmup
   --enable-shared[=PKGS]  build shared libraries [default=yes]
   --enable-static[=PKGS]  build static libraries [default=yes]
   --enable-fast-install[=PKGS]
@@ -3669,6 +3667,30 @@ case "${USE_DUMMY_LIBM}" in
    *)   DUMMY_LIBM=${USE_DUMMY_LIBM} ;;
 esac
 
+# Control warmup
+
+# Check whether --enable-warmup was given.
+if test "${enable_warmup+set}" = set; then :
+  enableval=$enable_warmup; case "${enableval}" in
+      yes)
+$as_echo "#define WARMUP_HEAT 3" >>confdefs.h
+ ;;
+      no)
+$as_echo "#define WARMUP_HEAT 0" >>confdefs.h
+ ;;
+      *)
+cat >>confdefs.h <<_ACEOF
+#define WARMUP_HEAT ${enableval}
+_ACEOF
+ ;;
+   esac
+else
+
+$as_echo "#define WARMUP_HEAT 3" >>confdefs.h
+
+fi
+
+
 # Check for support code
 
  if test -f $srcdir/config/$arch/chips/$chip/chipsupport.c; then
@@ -3690,23 +3712,6 @@ $as_echo "#define HAVE_BOARDSUPPORT_H 1" >>confdefs.h
 test -f $srcdir/config/$arch/chips/$chip/chipsupport.h && \
 
 $as_echo "#define HAVE_CHIPSUPPORT_H 1" >>confdefs.h
-
-
-# Test whether we have a calibration file
-
-test -f $srcdir/config/$arch/boards/$board/calibration && \
-    HAVE_CALIBRATION=yes && \
-
-$as_echo "#define HAVE_CALIBRATION 1" >>confdefs.h
-
-
- if test x$HAVE_CALIBRATION == xyes; then
-  CALIBRATION_TRUE=
-  CALIBRATION_FALSE='#'
-else
-  CALIBRATION_TRUE='#'
-  CALIBRATION_FALSE=
-fi
 
 
 # Architecture, board and chip specific and user CFLAGS and LDFLAGS. Note that
@@ -13823,15 +13828,6 @@ BOARD=$board
 CHIP=$chip
 
 
- if test x$arch = xarc; then
-  ARC_TRUE=
-  ARC_FALSE='#'
-else
-  ARC_TRUE='#'
-  ARC_FALSE=
-fi
-
-
 # Substitute DejaGnu variable
 
 
@@ -14086,10 +14082,6 @@ if test -z "${CHIPSUPPORT_C_TRUE}" && test -z "${CHIPSUPPORT_C_FALSE}"; then
   as_fn_error $? "conditional \"CHIPSUPPORT_C\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${CALIBRATION_TRUE}" && test -z "${CALIBRATION_FALSE}"; then
-  as_fn_error $? "conditional \"CALIBRATION\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
 if test -z "${AMDEP_TRUE}" && test -z "${AMDEP_FALSE}"; then
   as_fn_error $? "conditional \"AMDEP\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
@@ -14104,10 +14096,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${am__fastdepCCAS_TRUE}" && test -z "${am__fastdepCCAS_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCCAS\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ARC_TRUE}" && test -z "${ARC_FALSE}"; then
-  as_fn_error $? "conditional \"ARC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

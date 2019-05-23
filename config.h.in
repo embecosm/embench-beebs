@@ -3,9 +3,6 @@
 /* Board support header is present */
 #undef HAVE_BOARDSUPPORT_H
 
-/* Calibration file is present */
-#undef HAVE_CALIBRATION
-
 /* Chip support header is present */
 #undef HAVE_CHIPSUPPORT_H
 
@@ -68,3 +65,6 @@
 
 /* Version number of package */
 #undef VERSION
+
+/* How much warmup is needed */
+#undef WARMUP_HEAT

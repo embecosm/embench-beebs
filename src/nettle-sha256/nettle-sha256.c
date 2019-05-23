@@ -19,7 +19,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 451
+#define LOCAL_SCALE_FACTOR 455
 
 // From nettle/nettle-types.h
 
@@ -444,12 +444,31 @@ initialise_benchmark (void)
 {
 }
 
+
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
 benchmark (void)
 {
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
+{
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       memset (buffer, 0, sizeof (buffer));
       struct sha256_ctx ctx;

@@ -60,7 +60,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 329
+#define LOCAL_SCALE_FACTOR 317
 
 int minver (int row, int col, float eps);
 int mmul (int row_a, int col_a, int row_b, int col_b);
@@ -246,12 +246,30 @@ initialise_benchmark (void)
 }
 
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
 benchmark (void)
 {
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
+{
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       float eps = 1.0e-6;
 

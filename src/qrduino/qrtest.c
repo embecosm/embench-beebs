@@ -29,13 +29,31 @@ static char heap[HEAP_SIZE];
 static const char *encode;
 static int size;
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
 benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   static const char *in_encode = "http://www.mageec.com";
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       encode = in_encode;
       size = 22;

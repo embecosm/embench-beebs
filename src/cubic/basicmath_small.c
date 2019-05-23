@@ -39,11 +39,30 @@ initialise_benchmark (void)
 }
 
 
-int benchmark(void)
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
+int
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int
+benchmark_body (int rpt)
 {
   int  i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       double  a1 = 1.0, b1 = -10.5, c1 = 32.0, d1 = -30.0;
       double  a2 = 1.0, b2 = -4.5, c2 = 17.0, d2 = -30.0;

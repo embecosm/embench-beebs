@@ -1,3 +1,202 @@
+2019-05-23  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	Code for all benchmarks modified to provide a warmup function, to
+	allow the caches to be warmed up before we run the benchmark.
+	Move all benchmark functions to benchmark_body with a loop counter
+	and rewrite benchmark to call benchmark_body with the correct loop
+	counter.  Make benchmark_body noinline, so both warmup and
+	benchmark invoke the same code and hence warm up the caches
+	correctly.
+
+	Provide --enable-warmup function to specify the number of warmup
+	loops required, defaulting to 1.
+
+	Wwitch to be better generic functions for initialize_board,
+	start_trigger and stop_trigger.
+
+	Adjust LOCAL_SCALE to get timings as close to 4M cycles
+	using RI5CY verilator model and GCC with -O2.
+
+	* config.h.in: Regenerated.
+	* config/riscv32/boards/ri5cyverilator/boardsupport.c
+	(initialise_board, start_trigger, stop_trigger): Use different
+	form of asm to prevent exclusion without needing any instruction.
+	* configure: Regenerated.
+	* configure.ac: Add --enable-warmup option to set warmup loops.
+	* src/aha-mont64/mont64.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/crc32/crc_32.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/cubic/basicmath_small.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/edn/libedn.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/janne_complex/libjanne_complex.c: Adjust LOCAL_SCALE to
+	correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/matmult-int/matmult-int.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/minver/libminver.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/nbody/nbody.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/nettle-aes/nettle-aes.c: Adjust LOCAL_SCALE to correct
+	value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/nettle-sha256/nettle-sha256.c: Adjust LOCAL_SCALE to correct
+	value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/nsichneu/libnsichneu.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/picojpeg/picojpeg_test.c: Adjust LOCAL_SCALE to correct
+	value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/qrduino/qrtest.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/sglib-arrayquicksort/arrayquicksort.c: Adjust LOCAL_SCALE to
+	correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/sglib-dllist/dllist.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/sglib-hashtable/hashtable.c: Adjust LOCAL_SCALE to correct
+	value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/sglib-queue/queue.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/sglib-rbtree/rbtree.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/slre/libslre.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/st/libst.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/statemate/libstatemate.c: Adjust LOCAL_SCALE to correct
+	value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/tarai/libtarai.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/ud/libud.c: Adjust LOCAL_SCALE to correct value.
+	(warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* src/wikisort/libwikisort.c (warm_caches): Created.
+	(benchmark): Modified as wrapper to benchmark_body which is the
+	orignal function.
+	(benchmark_body): Renamed from original benchmark function and
+	made no_inline
+	(initialise_benchmark): Correctly C prototype for the function.
+	* support/Makefile.am: Remove reference to ARM_MILLICODE
+	* support/Makefile.in: Regenerated.
+	* support/main.c (main): Remove extern declaraations, add
+	warm_caches to warm up the caches.
+	* support/support.h: Add declarations of initialize_benchmark,
+	warm_caches and verify_benchmark.
+
 2019-05-09  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	A general simplification of the benchmark wide scaling.

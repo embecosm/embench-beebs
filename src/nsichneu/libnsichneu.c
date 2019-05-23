@@ -37,7 +37,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 1339
+#define LOCAL_SCALE_FACTOR 1346
 
 #ifdef DO_TRACING		// ON PC
 
@@ -70,13 +70,31 @@ initialise_benchmark (void)
 }
 
 
-/**void NSicherNeu()**/
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+/**void NSicherNeu()**/
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
+  for (j = 0; j < rpt; j++)
     {
       P1_is_marked = 3;
       P2_is_marked = 5;

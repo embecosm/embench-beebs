@@ -199,13 +199,31 @@ xbinGCD (uint64 a, uint64 b, volatile uint64 * pu, volatile uint64 * pv)
 /* ------------------------------ main ------------------------------ */
 static uint64 in_a, in_b, in_m;
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   int i;
   int errors;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       uint64 a, b, m, hr, p1hi, p1lo, p1, p, abar, bbar;
       uint64 phi, plo;
@@ -285,7 +303,7 @@ benchmark ()
 }
 
 void
-initialise_benchmark ()
+initialise_benchmark (void)
 {
   in_m = 0xfae849273928f89fLL;	// Must be odd.
   in_b = 0x14736defb9330573LL;	// Must be smaller than m.

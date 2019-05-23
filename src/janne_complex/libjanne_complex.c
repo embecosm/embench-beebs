@@ -41,7 +41,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 23119
+#define LOCAL_SCALE_FACTOR 23667
 
 
 int
@@ -66,15 +66,33 @@ complex (int a, int b)
   return 1;
 }
 
-static int a, b;
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
 
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int a, b;
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   volatile int answer = 0;
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       /* a = [1..30] b = [1..30] */
       answer = 0;

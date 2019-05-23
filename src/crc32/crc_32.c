@@ -17,7 +17,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 145
+#define LOCAL_SCALE_FACTOR 139
 
 #include <stdlib.h>
 
@@ -166,13 +166,31 @@ initialise_benchmark (void)
 }
 
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   int i;
   DWORD r;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       srand_beebs (0);
       r = crc32pseudo ();

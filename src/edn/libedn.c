@@ -36,7 +36,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 81
+#define LOCAL_SCALE_FACTOR 77
 
 
 #define N 100
@@ -277,12 +277,30 @@ initialise_benchmark (void)
 }
 
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
 benchmark (void)
 {
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
+{
   int j;
 
-  for (j = 0; j < (LOCAL_SCALE_FACTOR * CPU_MHZ); j++)
+  for (j = 0; j < rpt; j++)
     {
       short unsigned int in_a[200] = {
 	0x0000, 0x07ff, 0x0c00, 0x0800, 0x0200, 0xf800, 0xf300, 0x0400,

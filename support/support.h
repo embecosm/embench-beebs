@@ -35,10 +35,27 @@ void initialise_board (void);
 void start_trigger (void);
 void stop_trigger (void);
 
+/* Every benchmark implements this for one-off data initialization.  This is
+   only used for initialization that is independent of how often benchmark ()
+   is called. */
+
+void initialise_benchmark (void);
+
+/* Every benchmark implements this for cache warm up, typically calling
+   benchmark several times. The argument controls how much warming up is
+   done, with 0 meaning no warming. */
+
+void warm_caches (int temperature);
+
 /* Every benchmark implements this as its entry point. Don't allow it to be
    inlined! */
 
 int benchmark (void) __attribute__ ((noinline));
+
+/* Every benchmark must implement this to validate the result of the
+   benchmark. */
+
+int verify_benchmark (int res);
 
 /* Local simplified versions of library functions */
 

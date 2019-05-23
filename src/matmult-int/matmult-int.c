@@ -70,12 +70,30 @@ void Test (matrix A, matrix B, matrix Res);
 void Initialize (matrix Array);
 int RandomInteger (void);
 
+static int benchmark_body (int  rpt);
+
+void
+warm_caches (int  heat)
+{
+  int  res = benchmark_body (heat);
+
+  return;
+}
+
+
 int
-benchmark ()
+benchmark (void)
+{
+  return benchmark_body (LOCAL_SCALE_FACTOR * CPU_MHZ);
+}
+
+
+static int __attribute__ ((noinline))
+benchmark_body (int rpt)
 {
   int i;
 
-  for (i = 0; i < (LOCAL_SCALE_FACTOR * CPU_MHZ); i++)
+  for (i = 0; i < rpt; i++)
     {
       memcpy (ArrayA, ArrayA_ref,
 	      UPPERLIMIT * UPPERLIMIT * sizeof (ArrayA[0][0]));

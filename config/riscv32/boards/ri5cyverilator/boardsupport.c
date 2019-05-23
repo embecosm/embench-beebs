@@ -8,19 +8,20 @@
 
 #include <support.h>
 
-void initialise_board()
+void
+initialise_board()
 {
-  __asm__ volatile ("li a0, 0" : : : "a0");
+  __asm__ volatile ("" : : : "memory");
 }
 
-void start_trigger()
+void
+start_trigger()
 {
-  __asm__ volatile ("li a0, 0" : : : "a0");
+  __asm__ volatile ("" : : : "memory");
 }
 
-void stop_trigger()
+void
+stop_trigger()
 {
-  __asm__ volatile ("li a0, 0" : : : "a0");
+  __asm__ volatile ("" : : : "memory");
 }
-
-
