@@ -31,7 +31,7 @@ bmlist="aha-mont64            \
         crc32                 \
         cubic                 \
         edn                   \
-        janne_complex         \
+        huffbench             \
         matmult-int           \
         minver                \
         nbody                 \
@@ -48,7 +48,6 @@ bmlist="aha-mont64            \
         slre                  \
         st                    \
         statemate             \
-        tarai                 \
         ud                    \
         wikisort"
 
@@ -58,7 +57,7 @@ benchmark_aha_mont64=true
 benchmark_crc32=true
 benchmark_cubic=true
 benchmark_edn=true
-benchmark_janne_complex=true
+benchmark_huffbench=true
 benchmark_matmult_int=true
 benchmark_minver=true
 benchmark_nbody=true
@@ -75,7 +74,6 @@ benchmark_sglib_rbtree=true
 benchmark_slre=true
 benchmark_st=true
 benchmark_statemate=true
-benchmark_tarai=true
 benchmark_ud=true
 benchmark_wikisort=true
 
@@ -191,17 +189,17 @@ AC_ARG_ENABLE([benchmark-edn],
 AM_CONDITIONAL([ENABLED_BENCHMARK_EDN],
                [test x$benchmark_edn = xtrue])
 
-AC_ARG_ENABLE([benchmark-janne_complex],
-  [AS_HELP_STRING([--enable-benchmark-janne_complex],
-     [Enable benchmark janne_complex])],
+AC_ARG_ENABLE([benchmark-huffbench],
+  [AS_HELP_STRING([--enable-benchmark-huffbench],
+     [Enable benchmark huffbench])],
   [case "${enableval}" in
-      yes) benchmark_janne_complex=true ;;
-      no)  benchmark_janne_complex=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-janne_complex]) ;;
+      yes) benchmark_huffbench=true ;;
+      no)  benchmark_huffbench=false ;;
+      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-huffbench]) ;;
    esac],
   [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_JANNE_COMPLEX],
-               [test x$benchmark_janne_complex = xtrue])
+AM_CONDITIONAL([ENABLED_BENCHMARK_HUFFBENCH],
+               [test x$benchmark_huffbench = xtrue])
 
 AC_ARG_ENABLE([benchmark-matmult-int],
   [AS_HELP_STRING([--enable-benchmark-matmult-int],
@@ -395,18 +393,6 @@ AC_ARG_ENABLE([benchmark-statemate],
 AM_CONDITIONAL([ENABLED_BENCHMARK_STATEMATE],
                [test x$benchmark_statemate = xtrue])
 
-AC_ARG_ENABLE([benchmark-tarai],
-  [AS_HELP_STRING([--enable-benchmark-tarai],
-     [Enable benchmark tarai])],
-  [case "${enableval}" in
-      yes) benchmark_tarai=true ;;
-      no)  benchmark_tarai=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-tarai]) ;;
-   esac],
-  [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_TARAI],
-               [test x$benchmark_tarai = xtrue])
-
 AC_ARG_ENABLE([benchmark-ud],
   [AS_HELP_STRING([--enable-benchmark-ud],
      [Enable benchmark ud])],
@@ -562,7 +548,7 @@ AC_CONFIG_FILES([Makefile                          \
                  src/crc32/Makefile                \
                  src/cubic/Makefile                \
                  src/edn/Makefile                  \
-                 src/janne_complex/Makefile        \
+                 src/huffbench/Makefile            \
                  src/matmult-int/Makefile          \
                  src/minver/Makefile               \
                  src/nbody/Makefile                \
@@ -579,7 +565,6 @@ AC_CONFIG_FILES([Makefile                          \
                  src/slre/Makefile                 \
                  src/st/Makefile                   \
                  src/statemate/Makefile            \
-                 src/tarai/Makefile                \
                  src/ud/Makefile                   \
                  src/wikisort/Makefile             \
 		 support/Makefile                  \

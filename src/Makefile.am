@@ -16,7 +16,7 @@ SUBDIRS = aha-mont64            \
           crc32                 \
           cubic                 \
           edn                   \
-          janne_complex         \
+          huffbench             \
           matmult-int           \
           minver                \
           nbody                 \
@@ -33,7 +33,6 @@ SUBDIRS = aha-mont64            \
           slre                  \
           st                    \
           statemate             \
-          tarai                 \
           ud                    \
           wikisort
 

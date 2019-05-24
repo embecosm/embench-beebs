@@ -364,7 +364,7 @@ top_srcdir = @top_srcdir@
 @ENABLED_BENCHMARK_EDN_TRUE@                     $(top_builddir)/support/libsupport.la \
 @ENABLED_BENCHMARK_EDN_TRUE@                     libedn.la \
 @ENABLED_BENCHMARK_EDN_TRUE@                     $(top_builddir)/support/libbeebsc.la \
-@ENABLED_BENCHMARK_EDN_TRUE@                      $(DUMMY_LIBC) $(DUMMY_LIBGCC) $(DUMMY_COMPILERRT)
+@ENABLED_BENCHMARK_EDN_TRUE@                     $(DUMMY_LIBC) $(DUMMY_LIBGCC) $(DUMMY_COMPILERRT)
 
 all: all-am
 

@@ -114,8 +114,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-@ENABLED_BENCHMARK_TARAI_TRUE@bin_PROGRAMS = tarai$(EXEEXT)
-subdir = src/tarai
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@bin_PROGRAMS = huffbench$(EXEEXT)
+subdir = src/huffbench
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
@@ -129,28 +129,29 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
-libtarai_la_LIBADD =
-am__libtarai_la_SOURCES_DIST = libtarai.c
-@ENABLED_BENCHMARK_TARAI_TRUE@am_libtarai_la_OBJECTS = libtarai.lo
-libtarai_la_OBJECTS = $(am_libtarai_la_OBJECTS)
+libhuffbench_la_LIBADD =
+am__libhuffbench_la_SOURCES_DIST = libhuffbench.c
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@am_libhuffbench_la_OBJECTS =  \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	libhuffbench.lo
+libhuffbench_la_OBJECTS = $(am_libhuffbench_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-@ENABLED_BENCHMARK_TARAI_TRUE@am_libtarai_la_rpath =
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@am_libhuffbench_la_rpath =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_tarai_OBJECTS =
-tarai_OBJECTS = $(am_tarai_OBJECTS)
+am_huffbench_OBJECTS =
+huffbench_OBJECTS = $(am_huffbench_OBJECTS)
 am__DEPENDENCIES_1 =
-@ENABLED_BENCHMARK_TARAI_TRUE@tarai_DEPENDENCIES =  \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(am__DEPENDENCIES_1) \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(top_builddir)/support/libsupport.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@	libtarai.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(top_builddir)/support/libbeebsc.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(am__DEPENDENCIES_1) \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(am__DEPENDENCIES_1) \
-@ENABLED_BENCHMARK_TARAI_TRUE@	$(am__DEPENDENCIES_1)
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@huffbench_DEPENDENCIES =  \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(am__DEPENDENCIES_1) \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(top_builddir)/support/libsupport.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	libhuffbench.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(top_builddir)/support/libbeebsc.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(am__DEPENDENCIES_1) \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(am__DEPENDENCIES_1) \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -185,8 +186,9 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libtarai_la_SOURCES) $(tarai_SOURCES)
-DIST_SOURCES = $(am__libtarai_la_SOURCES_DIST) $(tarai_SOURCES)
+SOURCES = $(libhuffbench_la_SOURCES) $(huffbench_SOURCES)
+DIST_SOURCES = $(am__libhuffbench_la_SOURCES_DIST) \
+	$(huffbench_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -348,24 +350,24 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@ENABLED_BENCHMARK_TARAI_TRUE@AM_CPPFLAGS = -I $(top_srcdir)/support \
-@ENABLED_BENCHMARK_TARAI_TRUE@              -I $(top_srcdir)/config/@ARCH@/boards/@BOARD@ \
-@ENABLED_BENCHMARK_TARAI_TRUE@              -I $(top_srcdir)/config/@ARCH@/chips/@CHIP@ \
-@ENABLED_BENCHMARK_TARAI_TRUE@              @CPPFLAGS@
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@AM_CPPFLAGS = -I $(top_srcdir)/support \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@              -I $(top_srcdir)/config/@ARCH@/boards/@BOARD@ \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@              -I $(top_srcdir)/config/@ARCH@/chips/@CHIP@ \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@              @CPPFLAGS@
 
 
 # Setup a $(LIBM) variable that we can use instead of either
 # $(DUMMY_LIBM) or -lm.  This way we don't risk pulling in
 # parts of the real libm if we want to use $(DUMMY_LIBM).
-@ENABLED_BENCHMARK_TARAI_TRUE@LIBM = $(if $(DUMMY_LIBM),$(DUMMY_LIBM),-lm)
-@ENABLED_BENCHMARK_TARAI_TRUE@noinst_LTLIBRARIES = libtarai.la
-@ENABLED_BENCHMARK_TARAI_TRUE@tarai_SOURCES = 
-@ENABLED_BENCHMARK_TARAI_TRUE@libtarai_la_SOURCES = libtarai.c
-@ENABLED_BENCHMARK_TARAI_TRUE@tarai_LDADD = $(DUMMY_CRT0) \
-@ENABLED_BENCHMARK_TARAI_TRUE@                      $(top_builddir)/support/libsupport.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@                      libtarai.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@                      $(top_builddir)/support/libbeebsc.la \
-@ENABLED_BENCHMARK_TARAI_TRUE@                      $(DUMMY_LIBC) $(DUMMY_LIBGCC) $(DUMMY_COMPILERRT)
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@LIBM = $(if $(DUMMY_LIBM),$(DUMMY_LIBM),-lm)
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@noinst_LTLIBRARIES = libhuffbench.la
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@huffbench_SOURCES = 
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@libhuffbench_la_SOURCES = libhuffbench.c
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@huffbench_LDADD = $(DUMMY_CRT0) \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@                          $(top_builddir)/support/libsupport.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@                          libhuffbench.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@                          $(top_builddir)/support/libbeebsc.la \
+@ENABLED_BENCHMARK_HUFFBENCH_TRUE@                          $(DUMMY_LIBC) $(DUMMY_LIBGCC) $(DUMMY_COMPILERRT)
 
 all: all-am
 
@@ -380,9 +382,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/tarai/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/huffbench/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/tarai/Makefile
+	  $(AUTOMAKE) --gnu src/huffbench/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -413,8 +415,8 @@ clean-noinstLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-libtarai.la: $(libtarai_la_OBJECTS) $(libtarai_la_DEPENDENCIES) $(EXTRA_libtarai_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) $(am_libtarai_la_rpath) $(libtarai_la_OBJECTS) $(libtarai_la_LIBADD) $(LIBS)
+libhuffbench.la: $(libhuffbench_la_OBJECTS) $(libhuffbench_la_DEPENDENCIES) $(EXTRA_libhuffbench_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(LINK) $(am_libhuffbench_la_rpath) $(libhuffbench_la_OBJECTS) $(libhuffbench_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
@@ -465,9 +467,9 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-tarai$(EXEEXT): $(tarai_OBJECTS) $(tarai_DEPENDENCIES) $(EXTRA_tarai_DEPENDENCIES) 
-	@rm -f tarai$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(tarai_OBJECTS) $(tarai_LDADD) $(LIBS)
+huffbench$(EXEEXT): $(huffbench_OBJECTS) $(huffbench_DEPENDENCIES) $(EXTRA_huffbench_DEPENDENCIES) 
+	@rm -f huffbench$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(huffbench_OBJECTS) $(huffbench_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -475,7 +477,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libtarai.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libhuffbench.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

@@ -698,8 +698,6 @@ ENABLED_BENCHMARK_WIKISORT_FALSE
 ENABLED_BENCHMARK_WIKISORT_TRUE
 ENABLED_BENCHMARK_UD_FALSE
 ENABLED_BENCHMARK_UD_TRUE
-ENABLED_BENCHMARK_TARAI_FALSE
-ENABLED_BENCHMARK_TARAI_TRUE
 ENABLED_BENCHMARK_STATEMATE_FALSE
 ENABLED_BENCHMARK_STATEMATE_TRUE
 ENABLED_BENCHMARK_ST_FALSE
@@ -732,8 +730,8 @@ ENABLED_BENCHMARK_MINVER_FALSE
 ENABLED_BENCHMARK_MINVER_TRUE
 ENABLED_BENCHMARK_MATMULT_INT_FALSE
 ENABLED_BENCHMARK_MATMULT_INT_TRUE
-ENABLED_BENCHMARK_JANNE_COMPLEX_FALSE
-ENABLED_BENCHMARK_JANNE_COMPLEX_TRUE
+ENABLED_BENCHMARK_HUFFBENCH_FALSE
+ENABLED_BENCHMARK_HUFFBENCH_TRUE
 ENABLED_BENCHMARK_EDN_FALSE
 ENABLED_BENCHMARK_EDN_TRUE
 ENABLED_BENCHMARK_CUBIC_FALSE
@@ -833,7 +831,7 @@ enable_benchmark_aha_mont64
 enable_benchmark_crc32
 enable_benchmark_cubic
 enable_benchmark_edn
-enable_benchmark_janne_complex
+enable_benchmark_huffbench
 enable_benchmark_matmult_int
 enable_benchmark_minver
 enable_benchmark_nbody
@@ -850,7 +848,6 @@ enable_benchmark_sglib_rbtree
 enable_benchmark_slre
 enable_benchmark_st
 enable_benchmark_statemate
-enable_benchmark_tarai
 enable_benchmark_ud
 enable_benchmark_wikisort
 enable_warmup
@@ -1507,8 +1504,8 @@ Optional Features:
   --enable-benchmark-cubic
                           Enable benchmark cubic
   --enable-benchmark-edn  Enable benchmark edn
-  --enable-benchmark-janne_complex
-                          Enable benchmark janne_complex
+  --enable-benchmark-huffbench
+                          Enable benchmark huffbench
   --enable-benchmark-matmult-int
                           Enable benchmark matmult-int
   --enable-benchmark-minver
@@ -1539,8 +1536,6 @@ Optional Features:
   --enable-benchmark-st   Enable benchmark st
   --enable-benchmark-statemate
                           Enable benchmark statemate
-  --enable-benchmark-tarai
-                          Enable benchmark tarai
   --enable-benchmark-ud   Enable benchmark ud
   --enable-benchmark-wikisort
                           Enable benchmark wikisort
@@ -3065,7 +3060,7 @@ bmlist="aha-mont64            \
         crc32                 \
         cubic                 \
         edn                   \
-        janne_complex         \
+        huffbench             \
         matmult-int           \
         minver                \
         nbody                 \
@@ -3082,7 +3077,6 @@ bmlist="aha-mont64            \
         slre                  \
         st                    \
         statemate             \
-        tarai                 \
         ud                    \
         wikisort"
 
@@ -3092,7 +3086,7 @@ benchmark_aha_mont64=true
 benchmark_crc32=true
 benchmark_cubic=true
 benchmark_edn=true
-benchmark_janne_complex=true
+benchmark_huffbench=true
 benchmark_matmult_int=true
 benchmark_minver=true
 benchmark_nbody=true
@@ -3109,7 +3103,6 @@ benchmark_sglib_rbtree=true
 benchmark_slre=true
 benchmark_st=true
 benchmark_statemate=true
-benchmark_tarai=true
 benchmark_ud=true
 benchmark_wikisort=true
 
@@ -3266,21 +3259,21 @@ else
 fi
 
 
-# Check whether --enable-benchmark-janne_complex was given.
-if test "${enable_benchmark_janne_complex+set}" = set; then :
-  enableval=$enable_benchmark_janne_complex; case "${enableval}" in
-      yes) benchmark_janne_complex=true ;;
-      no)  benchmark_janne_complex=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-janne_complex" "$LINENO" 5 ;;
+# Check whether --enable-benchmark-huffbench was given.
+if test "${enable_benchmark_huffbench+set}" = set; then :
+  enableval=$enable_benchmark_huffbench; case "${enableval}" in
+      yes) benchmark_huffbench=true ;;
+      no)  benchmark_huffbench=false ;;
+      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-huffbench" "$LINENO" 5 ;;
    esac
 fi
 
- if test x$benchmark_janne_complex = xtrue; then
-  ENABLED_BENCHMARK_JANNE_COMPLEX_TRUE=
-  ENABLED_BENCHMARK_JANNE_COMPLEX_FALSE='#'
+ if test x$benchmark_huffbench = xtrue; then
+  ENABLED_BENCHMARK_HUFFBENCH_TRUE=
+  ENABLED_BENCHMARK_HUFFBENCH_FALSE='#'
 else
-  ENABLED_BENCHMARK_JANNE_COMPLEX_TRUE='#'
-  ENABLED_BENCHMARK_JANNE_COMPLEX_FALSE=
+  ENABLED_BENCHMARK_HUFFBENCH_TRUE='#'
+  ENABLED_BENCHMARK_HUFFBENCH_FALSE=
 fi
 
 
@@ -3572,24 +3565,6 @@ else
 fi
 
 
-# Check whether --enable-benchmark-tarai was given.
-if test "${enable_benchmark_tarai+set}" = set; then :
-  enableval=$enable_benchmark_tarai; case "${enableval}" in
-      yes) benchmark_tarai=true ;;
-      no)  benchmark_tarai=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-tarai" "$LINENO" 5 ;;
-   esac
-fi
-
- if test x$benchmark_tarai = xtrue; then
-  ENABLED_BENCHMARK_TARAI_TRUE=
-  ENABLED_BENCHMARK_TARAI_FALSE='#'
-else
-  ENABLED_BENCHMARK_TARAI_TRUE='#'
-  ENABLED_BENCHMARK_TARAI_FALSE=
-fi
-
-
 # Check whether --enable-benchmark-ud was given.
 if test "${enable_benchmark_ud+set}" = set; then :
   enableval=$enable_benchmark_ud; case "${enableval}" in
@@ -3686,7 +3661,7 @@ _ACEOF
    esac
 else
 
-$as_echo "#define WARMUP_HEAT 3" >>confdefs.h
+$as_echo "#define WARMUP_HEAT 1" >>confdefs.h
 
 fi
 
@@ -13848,7 +13823,7 @@ ac_config_headers="$ac_config_headers config.h"
 
 # Generate makefiles
 
-ac_config_files="$ac_config_files Makefile doc/Makefile src/Makefile src/aha-mont64/Makefile src/crc32/Makefile src/cubic/Makefile src/edn/Makefile src/janne_complex/Makefile src/matmult-int/Makefile src/minver/Makefile src/nbody/Makefile src/nettle-aes/Makefile src/nettle-sha256/Makefile src/nsichneu/Makefile src/picojpeg/Makefile src/qrduino/Makefile src/sglib-arrayquicksort/Makefile src/sglib-dllist/Makefile src/sglib-hashtable/Makefile src/sglib-queue/Makefile src/sglib-rbtree/Makefile src/slre/Makefile src/st/Makefile src/statemate/Makefile src/tarai/Makefile src/ud/Makefile src/wikisort/Makefile support/Makefile testsuite/Makefile testsuite/beebs.test/Makefile testsuite/config/Makefile testsuite/lib/Makefile"
+ac_config_files="$ac_config_files Makefile doc/Makefile src/Makefile src/aha-mont64/Makefile src/crc32/Makefile src/cubic/Makefile src/edn/Makefile src/huffbench/Makefile src/matmult-int/Makefile src/minver/Makefile src/nbody/Makefile src/nettle-aes/Makefile src/nettle-sha256/Makefile src/nsichneu/Makefile src/picojpeg/Makefile src/qrduino/Makefile src/sglib-arrayquicksort/Makefile src/sglib-dllist/Makefile src/sglib-hashtable/Makefile src/sglib-queue/Makefile src/sglib-rbtree/Makefile src/slre/Makefile src/st/Makefile src/statemate/Makefile src/ud/Makefile src/wikisort/Makefile support/Makefile testsuite/Makefile testsuite/beebs.test/Makefile testsuite/config/Makefile testsuite/lib/Makefile"
 
 
 # And spit it all out
@@ -13998,8 +13973,8 @@ if test -z "${ENABLED_BENCHMARK_EDN_TRUE}" && test -z "${ENABLED_BENCHMARK_EDN_F
   as_fn_error $? "conditional \"ENABLED_BENCHMARK_EDN\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${ENABLED_BENCHMARK_JANNE_COMPLEX_TRUE}" && test -z "${ENABLED_BENCHMARK_JANNE_COMPLEX_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_JANNE_COMPLEX\" was never defined.
+if test -z "${ENABLED_BENCHMARK_HUFFBENCH_TRUE}" && test -z "${ENABLED_BENCHMARK_HUFFBENCH_FALSE}"; then
+  as_fn_error $? "conditional \"ENABLED_BENCHMARK_HUFFBENCH\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ENABLED_BENCHMARK_MATMULT_INT_TRUE}" && test -z "${ENABLED_BENCHMARK_MATMULT_INT_FALSE}"; then
@@ -14064,10 +14039,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ENABLED_BENCHMARK_STATEMATE_TRUE}" && test -z "${ENABLED_BENCHMARK_STATEMATE_FALSE}"; then
   as_fn_error $? "conditional \"ENABLED_BENCHMARK_STATEMATE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ENABLED_BENCHMARK_TARAI_TRUE}" && test -z "${ENABLED_BENCHMARK_TARAI_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_TARAI\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ENABLED_BENCHMARK_UD_TRUE}" && test -z "${ENABLED_BENCHMARK_UD_FALSE}"; then
@@ -14983,7 +14954,7 @@ do
     "src/crc32/Makefile") CONFIG_FILES="$CONFIG_FILES src/crc32/Makefile" ;;
     "src/cubic/Makefile") CONFIG_FILES="$CONFIG_FILES src/cubic/Makefile" ;;
     "src/edn/Makefile") CONFIG_FILES="$CONFIG_FILES src/edn/Makefile" ;;
-    "src/janne_complex/Makefile") CONFIG_FILES="$CONFIG_FILES src/janne_complex/Makefile" ;;
+    "src/huffbench/Makefile") CONFIG_FILES="$CONFIG_FILES src/huffbench/Makefile" ;;
     "src/matmult-int/Makefile") CONFIG_FILES="$CONFIG_FILES src/matmult-int/Makefile" ;;
     "src/minver/Makefile") CONFIG_FILES="$CONFIG_FILES src/minver/Makefile" ;;
     "src/nbody/Makefile") CONFIG_FILES="$CONFIG_FILES src/nbody/Makefile" ;;
@@ -15000,7 +14971,6 @@ do
     "src/slre/Makefile") CONFIG_FILES="$CONFIG_FILES src/slre/Makefile" ;;
     "src/st/Makefile") CONFIG_FILES="$CONFIG_FILES src/st/Makefile" ;;
     "src/statemate/Makefile") CONFIG_FILES="$CONFIG_FILES src/statemate/Makefile" ;;
-    "src/tarai/Makefile") CONFIG_FILES="$CONFIG_FILES src/tarai/Makefile" ;;
     "src/ud/Makefile") CONFIG_FILES="$CONFIG_FILES src/ud/Makefile" ;;
     "src/wikisort/Makefile") CONFIG_FILES="$CONFIG_FILES src/wikisort/Makefile" ;;
     "support/Makefile") CONFIG_FILES="$CONFIG_FILES support/Makefile" ;;

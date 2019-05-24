@@ -1,3 +1,27 @@
+2019-05-24  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	Remove janne_complex and tarai from Embench, since they are too
+	small and synthetic. Add huffbench from BEEBS, to include a
+	compression program in Embench.
+
+	* configure: Regenerated.
+	* configure.ac: Remove janne_complex and tarai, add huffbench.
+	* src/Makefile.am: Likewise.
+	* src/Makefile.in: Regenerated.
+	* src/edn/Makefile.am: Fix layout.
+	* src/edn/Makefile.in: Regenerated.
+	* src/huffbench/.gitignore: Created.
+	* src/huffbench/Makefile.am: Created.
+	* src/huffbench/Makefile.in: Generated.
+	* src/huffbench/libhuffbench.c: Created.
+	* janne_complex/Makefile.am: Deleted.
+	* janne_complex/Makefile.in: Deleted.
+	* janne_complex/libjanne_complex.c: Deleted.
+	* src/sglib-dllist/Makefile.am: Fix layout.
+	* src/sglib-dllist/Makefile.in: Regenerated.
+	* tarai/Makefile.am: Deleted.
+	* tarai/libtarai.c: Deleted.
+
 2019-05-23  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	Code for all benchmarks modified to provide a warmup function, to
