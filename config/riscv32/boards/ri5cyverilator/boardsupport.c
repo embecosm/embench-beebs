@@ -11,17 +11,17 @@
 void
 initialise_board()
 {
-  __asm__ volatile ("" : : : "memory");
+  __asm__ volatile ("li a0, 0" : : : "memory");
 }
 
 void
 start_trigger()
 {
-  __asm__ volatile ("" : : : "memory");
+  __asm__ volatile ("li a0, 0" : : : "memory");
 }
 
 void
 stop_trigger()
 {
-  __asm__ volatile ("" : : : "memory");
+  __asm__ volatile ("li a0, 0" : : : "memory");
 }

@@ -805,7 +805,6 @@ Index
 * boardsupport.h:                        Header files.         (line  6)
 * BOARD_CFLAGS:                          Configuration files.  (line 17)
 * BOARD_CFLAGS <1>:                      Configuration files.  (line 23)
-* CPU_MHZ:                   Header files.         (line 16)
 * bugs:                                  Known Issues.         (line  6)
 * building BEEBS:                        Building.             (line  6)
 * Calibration:                           Calibration.          (line  6)
@@ -816,6 +815,7 @@ Index
 * configuration files:                   Configuration files.  (line  6)
 * configuring BEEBS:                     Configuring the Build.
                                                                (line  6)
+* CPU_MHZ:                               Header files.         (line 16)
 * header files:                          Header files.         (line  6)
 * initialize_board:                      Board specific code.  (line 11)
 * known issues:                          Known Issues.         (line  6)
@@ -842,11 +842,11 @@ Node: Adding a New Board to BEEBS4219
 Node: Where to add files4535
 Node: Configuration files5704
 Node: Header files6529
-Node: Board specific code7285
-Node: Calibration8109
-Node: Adding a New Benchmark to BEEBS8960
-Node: Benchmark structure9542
-Node: GNU Free Documentation License10231
-Node: Index32634
+Node: Board specific code7273
+Node: Calibration8097
+Node: Adding a New Benchmark to BEEBS8936
+Node: Benchmark structure9518
+Node: GNU Free Documentation License10207
+Node: Index32610
 
 End Tag Table

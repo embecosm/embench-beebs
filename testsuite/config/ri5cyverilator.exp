@@ -22,7 +22,7 @@ proc beebs_load { file } {
     # enough time for this to happen.
     #
     # We set all required breakpoints here then begin execution.
-    spawn $GDB --interpreter=mi -ex "set height 0" \
+    spawn $GDB -ex "set style enabled off" -ex "set height 0" \
       -ex "file $file" \
       -ex "target remote | $GDB_SERVER -c ri5cy --stdin" \
       -ex "stepi" \
@@ -36,6 +36,7 @@ proc beebs_load { file } {
     # Wait until we hit start_trigger
     expect {
       -re ".*stopped.*start_trigger.*" { }
+      -re "Breakpoint.*start_trigger.*" { }
       timeout {
         unresolved "$file: waiting for start_trigger\n"
         return fail
@@ -45,7 +46,7 @@ proc beebs_load { file } {
     # Record the cycle count at start_trigger
     send "monitor cyclecount\n"
     expect {
-      -re ".*@\"(\[0-9\]+)" {
+      -re "(\[0-9\]+)" {
         set start_cycle_count $expect_out(1,string)
       }
       timeout {
@@ -58,6 +59,7 @@ proc beebs_load { file } {
     send "cont\n"
     expect {
       -re ".*stopped.*stop_trigger.*" { }
+      -re "Breakpoint.*stop_trigger.*" { }
       timeout {
         unresolved "$file: waiting for stop_trigger\n"
         return fail
@@ -67,7 +69,7 @@ proc beebs_load { file } {
     # Record the cycle count at stop_trigger
     send "monitor cyclecount\n"
     expect {
-      -re ".*@\"(\[0-9\]+)" {
+      -re "(\[0-9\]+)" {
         set stop_cycle_count $expect_out(1,string)
       }
       timeout {
@@ -82,6 +84,9 @@ proc beebs_load { file } {
     # _exit and check its argument instead).
     send "cont\n"
     expect {
+      -re "Breakpoint.* _exit" {
+        send "print \$a0\n"
+      }
       -re ".*__internal_syscall.*n=93.*" {
         send "print \$a0\n"
       }
