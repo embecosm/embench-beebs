@@ -89,7 +89,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 1142
+#define LOCAL_SCALE_FACTOR 1174
 
 
 long int a[20][20], b[20], x[20];

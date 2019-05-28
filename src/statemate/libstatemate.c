@@ -45,7 +45,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 5333
+#define LOCAL_SCALE_FACTOR 3784
 
 /*
 ** actually, we don't really need floating point here

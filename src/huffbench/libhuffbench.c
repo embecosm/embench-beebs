@@ -51,66 +51,74 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 13
+#define LOCAL_SCALE_FACTOR 12
 
 /* BEEBS heap is just an array */
 
 #define HEAP_SIZE 8192
 static char heap[HEAP_SIZE];
 
-// embedded random number generator; ala Park and Miller
-static long seed = 1325;
-static const long IA = 16807;
-static const long IM = 2147483647;
-static const long IQ = 127773;
-static const long IR = 2836;
-static const long MASK = 123459876;
-
-// return index between 0 and 3
-static size_t
-random4 ()
-{
-  long k;
-  size_t result;
-
-  seed ^= MASK;
-  k = seed / IQ;
-  seed = IA * (seed - k * IQ) - IR * k;
-
-  if (seed < 0L)
-    seed += IM;
-
-  result = (size_t) (seed % 32L);
-  seed ^= MASK;
-
-  return result;
-}
-
-
-static const int TEST_SIZE = 500;
+#define TEST_SIZE 500
 
 typedef unsigned long bits32;
 typedef unsigned char byte;
 
 // compressed (encoded) data
 
-byte *
-generate_test_data (size_t n)
-{
-  char *codes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ012345";
+static const byte orig_data[TEST_SIZE] = {
+  'J', '2', 'O', 'Z', 'F', '5', '0', 'F', 'Y', 'L',
+  'D', '5', 'U', 'T', 'V', 'Y', 'Y', 'R', 'M', 'T',
+  '0', 'V', 'X', 'O', '0', '1', 'V', 'C', '5', 'F',
+  'N', 'I', 'B', '1', 'C', 'G', '1', '2', 'M', 'T',
+  'I', 'P', 'T', '2', 'C', 'I', 'V', '0', '0', 'B',
+  'O', 'U', 'W', 'F', 'D', 'R', 'A', 'Y', 'T', 'A',
+  '3', 'A', 'I', '4', '2', 'K', 'F', 'X', 'H', 'R',
+  'K', 'P', 'A', '3', 'L', 'C', 'G', 'A', '3', 'A',
+  'B', 'L', 'U', 'Y', 'Q', 'X', 'J', 'R', 'Q', '2',
+  'R', 'N', '2', 'Z', 'M', 'Y', 'E', 'R', 'P', 'L',
+  'C', '0', '0', 'C', 'X', 'F', 'E', '3', 'G', 'B',
+  '3', 'H', 'M', 'S', '5', '3', 'J', 'I', 'O', 'Z',
+  'E', '5', 'H', 'B', 'Y', 'T', 'Z', '2', 'E', 'J',
+  'H', 'G', 'D', 'B', 'I', '0', 'H', 'M', 'Y', 'N',
+  'O', 'V', 'U', '0', 'H', 'U', 'X', 'R', '2', 'F',
+  'K', 'B', 'E', 'R', 'C', '3', 'E', '1', 'Z', 'I',
+  'E', 'B', 'O', 'H', 'C', 'W', 'C', 'J', 'D', '0',
+  'W', 'R', 'P', 'L', 'L', 'X', '5', 'D', 'I', '1',
+  'I', 'S', '2', 'N', 'E', '4', 'K', 'I', '0', 'D',
+  'R', '4', 'E', '5', 'G', 'H', 'W', 'I', 'Q', 'Z',
+  'C', 'H', 'K', 'R', 'S', 'V', 'I', 'R', 'Y', 'Q',
+  'M', 'B', 'D', 'J', 'O', 'H', 'H', 'Y', 'P', 'B',
+  '1', 'A', 'A', 'A', 'A', 'G', 'H', 'W', 'O', 'X',
+  'P', 'Q', '4', 'Z', 'B', 'Q', 'O', 'K', 'B', 'H',
+  '0', 'O', 'I', '3', 'X', 'W', 'E', '4', 'O', 'U',
+  'A', 'J', 'U', 'A', 'J', 'U', 'G', 'Q', 'K', 'U',
+  'I', 'Z', 'E', 'G', 'S', 'F', 'X', 'B', 'P', 'Y',
+  'I', 'K', 'G', 'Q', 'H', '3', 'G', 'M', '2', 'U',
+  'A', '2', '3', 'U', '2', 'H', 'J', 'C', 'X', 'T',
+  'W', '5', 'N', '0', 'G', '5', '5', '3', 'A', 'P',
+  'V', 'I', 'Z', '2', 'Y', 'A', 'Z', '4', 'M', 'V',
+  'S', 'M', 'R', 'Q', 'B', 'N', 'X', 'K', 'P', 'O',
+  '3', 'F', 'O', 'K', '5', 'U', 'K', '5', 'R', 'K',
+  'O', 'G', 'T', 'H', 'C', 'L', 'H', '2', 'K', 'U',
+  'R', '2', 'A', 'D', 'M', 'B', 'Q', 'D', 'L', 'A',
+  'S', 'J', 'F', 'A', 'T', 'F', 'U', '3', 'E', 'F',
+  'I', 'S', 'L', '1', 'Z', 'O', 'G', 'A', 'K', 'Q',
+  'U', '1', 'N', 'V', '4', 'Z', 'W', 'P', '3', 'C',
+  'P', 'P', 'L', 'U', 'P', '4', 'Z', 'D', '2', '3',
+  'I', 'E', 'P', 'T', '5', 'I', 'B', 'F', 'J', 'L',
+  'W', '3', 'H', 'D', 'S', 'F', '2', 'J', 'U', 'Z',
+  'L', 'D', 'I', 'W', 'Y', 'X', 'U', 'R', '0', 'Q',
+  'P', 'C', 'U', '4', 'W', 'T', 'H', 'X', 'Z', 'Q',
+  'D', 'P', 'N', 'K', 'S', 'A', 'P', 'O', 'J', 'E',
+  'I', 'U', 'H', 'Q', 'K', '5', 'I', '4', 'R', 'C',
+  'P', 'A', 'F', 'D', '4', '1', 'X', 'F', 'S', 'Q',
+  'V', 'V', '5', 'D', '5', 'R', 'D', 'P', '5', 'M',
+  'T', 'H', 'A', '0', 'Y', 'K', '0', 'A', 'I', 'L',
+  'C', 'X', 'L', 'H', '1', 'J', 'C', 'S', 'P', 'V',
+  'C', 'E', 'K', 'B', 'H', 'K', 'S', 'K', 'Z', 'R' };
 
-  byte *result = (byte *) malloc_beebs (n);
-  byte *ptr = result;
+static byte test_data[TEST_SIZE];
 
-  int i;
-  for (i = 0; i < n; ++i)
-    {
-      *ptr = (byte) codes[random4 ()];
-      ++ptr;
-    }
-
-  return result;
-}
 
 // utility function for processing compression trie
 static void
@@ -441,12 +449,10 @@ compdecomp (byte * data, size_t data_len)
 }
 
 
-/* This benchmark does not support verification */
-
 int
 verify_benchmark (int res __attribute ((unused)))
 {
-  return -1;
+  return 0 == memcmp (test_data, orig_data, TEST_SIZE * sizeof (orig_data[0]));
 }
 
 
@@ -483,13 +489,10 @@ static int __attribute__ ((noinline)) benchmark_body (int rpt)
       init_heap_beebs ((void *) heap, HEAP_SIZE);
 
       // initialization
-      byte *test_data = generate_test_data (TEST_SIZE);
+      memcpy (test_data, orig_data, TEST_SIZE * sizeof (orig_data[0]));
 
       // what we're timing
       compdecomp (test_data, TEST_SIZE);
-
-      // release resources
-      free_beebs (test_data);
     }
 
   // done

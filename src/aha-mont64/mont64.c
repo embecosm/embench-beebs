@@ -17,7 +17,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 315
+#define LOCAL_SCALE_FACTOR 316
 
 /* Computes a*b mod m using Montgomery multiplication (MM). a, b, and m
 are unsigned numbers with a, b < m < 2**64, and m odd. The code does

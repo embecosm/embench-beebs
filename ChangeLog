@@ -1,5 +1,24 @@
 2019-05-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	* src/aha-mont64/mont64.c: Tune LOCAL_SCALE_FACTOR.
+	* src/crc32/crc_32.c: Likewise.
+	* src/huffbench/libhuffbench.c: Likewise.
+	(random4, generate_test_data): Deleted.
+	(orig_data, test_data): static arrays created.
+	(verify_benchmark): Added implementation.
+	(benchmark_body): Initialize using static constant array.
+	* src/minver/libminver.c: Tune LOCAL_SCALE_FACTOR.
+	* src/nettle-aes/nettle-aes.c: Likewise.
+	* src/nettle-sha256/nettle-sha256.c: Likewise.
+	* src/nsichneu/libnsichneu.c: Likewise.
+	* src/picojpeg/picojpeg_test.c: Likewise.
+	* src/slre/libslre.c: Likewise.
+	* src/st/libst.c: Likewise.
+	* src/statemate/libstatemate.c: Likewise.
+	* src/ud/libud.c: Likewise.
+
+2019-05-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	* config/riscv32/boards/ri5cyverilator/boardsupport.c
 	(initialise_board, start_trigger, stop_trigger): Put a no-op
 	instruction in to work around a RI5CY issue with restaring on rtn

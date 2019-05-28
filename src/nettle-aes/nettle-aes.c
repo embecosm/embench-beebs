@@ -19,7 +19,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR 65
+#define LOCAL_SCALE_FACTOR 66
 
 // From nettle/macros.h
 
