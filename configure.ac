@@ -40,11 +40,7 @@ bmlist="aha-mont64            \
         nsichneu              \
         picojpeg              \
         qrduino               \
-        sglib-arrayquicksort  \
-        sglib-dllist          \
-        sglib-hashtable       \
-        sglib-queue           \
-        sglib-rbtree          \
+        sglib-combined        \
         slre                  \
         st                    \
         statemate             \
@@ -66,11 +62,7 @@ benchmark_nettle_sha256=true
 benchmark_nsichneu=true
 benchmark_picojpeg=true
 benchmark_qrduino=true
-benchmark_sglib_arrayquicksort=true
-benchmark_sglib_dllist=true
-benchmark_sglib_hashtable=true
-benchmark_sglib_queue=true
-benchmark_sglib_rbtree=true
+benchmark_sglib_combined=true
 benchmark_slre=true
 benchmark_st=true
 benchmark_statemate=true
@@ -297,65 +289,17 @@ AC_ARG_ENABLE([benchmark-qrduino],
 AM_CONDITIONAL([ENABLED_BENCHMARK_QRDUINO],
                [test x$benchmark_qrduino = xtrue])
 
-AC_ARG_ENABLE([benchmark-sglib-arrayquicksort],
-  [AS_HELP_STRING([--enable-benchmark-sglib-arrayquicksort],
-     [Enable benchmark sglib-arrayquicksort])],
+AC_ARG_ENABLE([benchmark-sglib-combined],
+  [AS_HELP_STRING([--enable-benchmark-sglib-combined],
+     [Enable benchmark sglib-combined])],
   [case "${enableval}" in
-      yes) benchmark_sglib_arrayquicksort=true ;;
-      no)  benchmark_sglib_arrayquicksort=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-arrayquicksort]) ;;
+      yes) benchmark_sglib_combined=true ;;
+      no)  benchmark_sglib_combined=false ;;
+      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-combined]) ;;
    esac],
   [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT],
-               [test x$benchmark_sglib_arrayquicksort = xtrue])
-
-AC_ARG_ENABLE([benchmark-sglib-dllist],
-  [AS_HELP_STRING([--enable-benchmark-sglib-dllist],
-     [Enable benchmark sglib-dllist])],
-  [case "${enableval}" in
-      yes) benchmark_sglib_dllist=true ;;
-      no)  benchmark_sglib_dllist=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-dllist]) ;;
-   esac],
-  [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_DLLIST],
-               [test x$benchmark_sglib_dllist = xtrue])
-
-AC_ARG_ENABLE([benchmark-sglib-hashtable],
-  [AS_HELP_STRING([--enable-benchmark-sglib-hashtable],
-     [Enable benchmark sglib-hashtable])],
-  [case "${enableval}" in
-      yes) benchmark_sglib_hashtable=true ;;
-      no)  benchmark_sglib_hashtable=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-hashtable]) ;;
-   esac],
-  [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_HASHTABLE],
-               [test x$benchmark_sglib_hashtable = xtrue])
-
-AC_ARG_ENABLE([benchmark-sglib-queue],
-  [AS_HELP_STRING([--enable-benchmark-sglib-queue],
-     [Enable benchmark sglib-queue])],
-  [case "${enableval}" in
-      yes) benchmark_sglib_queue=true ;;
-      no)  benchmark_sglib_queue=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-queue]) ;;
-   esac],
-  [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_QUEUE],
-               [test x$benchmark_sglib_queue = xtrue])
-
-AC_ARG_ENABLE([benchmark-sglib-rbtree],
-  [AS_HELP_STRING([--enable-benchmark-sglib-rbtree],
-     [Enable benchmark sglib-rbtree])],
-  [case "${enableval}" in
-      yes) benchmark_sglib_rbtree=true ;;
-      no)  benchmark_sglib_rbtree=false ;;
-      *)   AC_MSG_ERROR([bad value ${enableval} for --enable-benchmark-sglib-rbtree]) ;;
-   esac],
-  [])
-AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_RBTREE],
-               [test x$benchmark_sglib_rbtree = xtrue])
+AM_CONDITIONAL([ENABLED_BENCHMARK_SGLIB_COMBINED],
+               [test x$benchmark_sglib_combined = xtrue])
 
 AC_ARG_ENABLE([benchmark-slre],
   [AS_HELP_STRING([--enable-benchmark-slre],
@@ -557,11 +501,7 @@ AC_CONFIG_FILES([Makefile                          \
                  src/nsichneu/Makefile             \
                  src/picojpeg/Makefile             \
                  src/qrduino/Makefile              \
-                 src/sglib-arrayquicksort/Makefile \
-                 src/sglib-dllist/Makefile         \
-                 src/sglib-hashtable/Makefile      \
-                 src/sglib-queue/Makefile          \
-                 src/sglib-rbtree/Makefile         \
+                 src/sglib-combined/Makefile \
                  src/slre/Makefile                 \
                  src/st/Makefile                   \
                  src/statemate/Makefile            \

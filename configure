@@ -704,16 +704,8 @@ ENABLED_BENCHMARK_ST_FALSE
 ENABLED_BENCHMARK_ST_TRUE
 ENABLED_BENCHMARK_SLRE_FALSE
 ENABLED_BENCHMARK_SLRE_TRUE
-ENABLED_BENCHMARK_SGLIB_RBTREE_FALSE
-ENABLED_BENCHMARK_SGLIB_RBTREE_TRUE
-ENABLED_BENCHMARK_SGLIB_QUEUE_FALSE
-ENABLED_BENCHMARK_SGLIB_QUEUE_TRUE
-ENABLED_BENCHMARK_SGLIB_HASHTABLE_FALSE
-ENABLED_BENCHMARK_SGLIB_HASHTABLE_TRUE
-ENABLED_BENCHMARK_SGLIB_DLLIST_FALSE
-ENABLED_BENCHMARK_SGLIB_DLLIST_TRUE
-ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_FALSE
-ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_TRUE
+ENABLED_BENCHMARK_SGLIB_COMBINED_FALSE
+ENABLED_BENCHMARK_SGLIB_COMBINED_TRUE
 ENABLED_BENCHMARK_QRDUINO_FALSE
 ENABLED_BENCHMARK_QRDUINO_TRUE
 ENABLED_BENCHMARK_PICOJPEG_FALSE
@@ -840,11 +832,7 @@ enable_benchmark_nettle_sha256
 enable_benchmark_nsichneu
 enable_benchmark_picojpeg
 enable_benchmark_qrduino
-enable_benchmark_sglib_arrayquicksort
-enable_benchmark_sglib_dllist
-enable_benchmark_sglib_hashtable
-enable_benchmark_sglib_queue
-enable_benchmark_sglib_rbtree
+enable_benchmark_sglib_combined
 enable_benchmark_slre
 enable_benchmark_st
 enable_benchmark_statemate
@@ -1522,16 +1510,8 @@ Optional Features:
                           Enable benchmark picojpeg
   --enable-benchmark-qrduino
                           Enable benchmark qrduino
-  --enable-benchmark-sglib-arrayquicksort
-                          Enable benchmark sglib-arrayquicksort
-  --enable-benchmark-sglib-dllist
-                          Enable benchmark sglib-dllist
-  --enable-benchmark-sglib-hashtable
-                          Enable benchmark sglib-hashtable
-  --enable-benchmark-sglib-queue
-                          Enable benchmark sglib-queue
-  --enable-benchmark-sglib-rbtree
-                          Enable benchmark sglib-rbtree
+  --enable-benchmark-sglib-combined
+                          Enable benchmark sglib-combined
   --enable-benchmark-slre Enable benchmark slre
   --enable-benchmark-st   Enable benchmark st
   --enable-benchmark-statemate
@@ -3069,11 +3049,7 @@ bmlist="aha-mont64            \
         nsichneu              \
         picojpeg              \
         qrduino               \
-        sglib-arrayquicksort  \
-        sglib-dllist          \
-        sglib-hashtable       \
-        sglib-queue           \
-        sglib-rbtree          \
+        sglib-combined        \
         slre                  \
         st                    \
         statemate             \
@@ -3095,11 +3071,7 @@ benchmark_nettle_sha256=true
 benchmark_nsichneu=true
 benchmark_picojpeg=true
 benchmark_qrduino=true
-benchmark_sglib_arrayquicksort=true
-benchmark_sglib_dllist=true
-benchmark_sglib_hashtable=true
-benchmark_sglib_queue=true
-benchmark_sglib_rbtree=true
+benchmark_sglib_combined=true
 benchmark_slre=true
 benchmark_st=true
 benchmark_statemate=true
@@ -3421,93 +3393,21 @@ else
 fi
 
 
-# Check whether --enable-benchmark-sglib-arrayquicksort was given.
-if test "${enable_benchmark_sglib_arrayquicksort+set}" = set; then :
-  enableval=$enable_benchmark_sglib_arrayquicksort; case "${enableval}" in
-      yes) benchmark_sglib_arrayquicksort=true ;;
-      no)  benchmark_sglib_arrayquicksort=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-arrayquicksort" "$LINENO" 5 ;;
+# Check whether --enable-benchmark-sglib-combined was given.
+if test "${enable_benchmark_sglib_combined+set}" = set; then :
+  enableval=$enable_benchmark_sglib_combined; case "${enableval}" in
+      yes) benchmark_sglib_combined=true ;;
+      no)  benchmark_sglib_combined=false ;;
+      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-combined" "$LINENO" 5 ;;
    esac
 fi
 
- if test x$benchmark_sglib_arrayquicksort = xtrue; then
-  ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_TRUE=
-  ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_FALSE='#'
+ if test x$benchmark_sglib_combined = xtrue; then
+  ENABLED_BENCHMARK_SGLIB_COMBINED_TRUE=
+  ENABLED_BENCHMARK_SGLIB_COMBINED_FALSE='#'
 else
-  ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_TRUE='#'
-  ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_FALSE=
-fi
-
-
-# Check whether --enable-benchmark-sglib-dllist was given.
-if test "${enable_benchmark_sglib_dllist+set}" = set; then :
-  enableval=$enable_benchmark_sglib_dllist; case "${enableval}" in
-      yes) benchmark_sglib_dllist=true ;;
-      no)  benchmark_sglib_dllist=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-dllist" "$LINENO" 5 ;;
-   esac
-fi
-
- if test x$benchmark_sglib_dllist = xtrue; then
-  ENABLED_BENCHMARK_SGLIB_DLLIST_TRUE=
-  ENABLED_BENCHMARK_SGLIB_DLLIST_FALSE='#'
-else
-  ENABLED_BENCHMARK_SGLIB_DLLIST_TRUE='#'
-  ENABLED_BENCHMARK_SGLIB_DLLIST_FALSE=
-fi
-
-
-# Check whether --enable-benchmark-sglib-hashtable was given.
-if test "${enable_benchmark_sglib_hashtable+set}" = set; then :
-  enableval=$enable_benchmark_sglib_hashtable; case "${enableval}" in
-      yes) benchmark_sglib_hashtable=true ;;
-      no)  benchmark_sglib_hashtable=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-hashtable" "$LINENO" 5 ;;
-   esac
-fi
-
- if test x$benchmark_sglib_hashtable = xtrue; then
-  ENABLED_BENCHMARK_SGLIB_HASHTABLE_TRUE=
-  ENABLED_BENCHMARK_SGLIB_HASHTABLE_FALSE='#'
-else
-  ENABLED_BENCHMARK_SGLIB_HASHTABLE_TRUE='#'
-  ENABLED_BENCHMARK_SGLIB_HASHTABLE_FALSE=
-fi
-
-
-# Check whether --enable-benchmark-sglib-queue was given.
-if test "${enable_benchmark_sglib_queue+set}" = set; then :
-  enableval=$enable_benchmark_sglib_queue; case "${enableval}" in
-      yes) benchmark_sglib_queue=true ;;
-      no)  benchmark_sglib_queue=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-queue" "$LINENO" 5 ;;
-   esac
-fi
-
- if test x$benchmark_sglib_queue = xtrue; then
-  ENABLED_BENCHMARK_SGLIB_QUEUE_TRUE=
-  ENABLED_BENCHMARK_SGLIB_QUEUE_FALSE='#'
-else
-  ENABLED_BENCHMARK_SGLIB_QUEUE_TRUE='#'
-  ENABLED_BENCHMARK_SGLIB_QUEUE_FALSE=
-fi
-
-
-# Check whether --enable-benchmark-sglib-rbtree was given.
-if test "${enable_benchmark_sglib_rbtree+set}" = set; then :
-  enableval=$enable_benchmark_sglib_rbtree; case "${enableval}" in
-      yes) benchmark_sglib_rbtree=true ;;
-      no)  benchmark_sglib_rbtree=false ;;
-      *)   as_fn_error $? "bad value ${enableval} for --enable-benchmark-sglib-rbtree" "$LINENO" 5 ;;
-   esac
-fi
-
- if test x$benchmark_sglib_rbtree = xtrue; then
-  ENABLED_BENCHMARK_SGLIB_RBTREE_TRUE=
-  ENABLED_BENCHMARK_SGLIB_RBTREE_FALSE='#'
-else
-  ENABLED_BENCHMARK_SGLIB_RBTREE_TRUE='#'
-  ENABLED_BENCHMARK_SGLIB_RBTREE_FALSE=
+  ENABLED_BENCHMARK_SGLIB_COMBINED_TRUE='#'
+  ENABLED_BENCHMARK_SGLIB_COMBINED_FALSE=
 fi
 
 
@@ -13823,7 +13723,7 @@ ac_config_headers="$ac_config_headers config.h"
 
 # Generate makefiles
 
-ac_config_files="$ac_config_files Makefile doc/Makefile src/Makefile src/aha-mont64/Makefile src/crc32/Makefile src/cubic/Makefile src/edn/Makefile src/huffbench/Makefile src/matmult-int/Makefile src/minver/Makefile src/nbody/Makefile src/nettle-aes/Makefile src/nettle-sha256/Makefile src/nsichneu/Makefile src/picojpeg/Makefile src/qrduino/Makefile src/sglib-arrayquicksort/Makefile src/sglib-dllist/Makefile src/sglib-hashtable/Makefile src/sglib-queue/Makefile src/sglib-rbtree/Makefile src/slre/Makefile src/st/Makefile src/statemate/Makefile src/ud/Makefile src/wikisort/Makefile support/Makefile testsuite/Makefile testsuite/beebs.test/Makefile testsuite/config/Makefile testsuite/lib/Makefile"
+ac_config_files="$ac_config_files Makefile doc/Makefile src/Makefile src/aha-mont64/Makefile src/crc32/Makefile src/cubic/Makefile src/edn/Makefile src/huffbench/Makefile src/matmult-int/Makefile src/minver/Makefile src/nbody/Makefile src/nettle-aes/Makefile src/nettle-sha256/Makefile src/nsichneu/Makefile src/picojpeg/Makefile src/qrduino/Makefile src/sglib-combined/Makefile src/slre/Makefile src/st/Makefile src/statemate/Makefile src/ud/Makefile src/wikisort/Makefile support/Makefile testsuite/Makefile testsuite/beebs.test/Makefile testsuite/config/Makefile testsuite/lib/Makefile"
 
 
 # And spit it all out
@@ -14009,24 +13909,8 @@ if test -z "${ENABLED_BENCHMARK_QRDUINO_TRUE}" && test -z "${ENABLED_BENCHMARK_Q
   as_fn_error $? "conditional \"ENABLED_BENCHMARK_QRDUINO\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_ARRAYQUICKSORT\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ENABLED_BENCHMARK_SGLIB_DLLIST_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_DLLIST_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_DLLIST\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ENABLED_BENCHMARK_SGLIB_HASHTABLE_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_HASHTABLE_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_HASHTABLE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ENABLED_BENCHMARK_SGLIB_QUEUE_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_QUEUE_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_QUEUE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ENABLED_BENCHMARK_SGLIB_RBTREE_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_RBTREE_FALSE}"; then
-  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_RBTREE\" was never defined.
+if test -z "${ENABLED_BENCHMARK_SGLIB_COMBINED_TRUE}" && test -z "${ENABLED_BENCHMARK_SGLIB_COMBINED_FALSE}"; then
+  as_fn_error $? "conditional \"ENABLED_BENCHMARK_SGLIB_COMBINED\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ENABLED_BENCHMARK_SLRE_TRUE}" && test -z "${ENABLED_BENCHMARK_SLRE_FALSE}"; then
@@ -14963,11 +14847,7 @@ do
     "src/nsichneu/Makefile") CONFIG_FILES="$CONFIG_FILES src/nsichneu/Makefile" ;;
     "src/picojpeg/Makefile") CONFIG_FILES="$CONFIG_FILES src/picojpeg/Makefile" ;;
     "src/qrduino/Makefile") CONFIG_FILES="$CONFIG_FILES src/qrduino/Makefile" ;;
-    "src/sglib-arrayquicksort/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-arrayquicksort/Makefile" ;;
-    "src/sglib-dllist/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-dllist/Makefile" ;;
-    "src/sglib-hashtable/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-hashtable/Makefile" ;;
-    "src/sglib-queue/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-queue/Makefile" ;;
-    "src/sglib-rbtree/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-rbtree/Makefile" ;;
+    "src/sglib-combined/Makefile") CONFIG_FILES="$CONFIG_FILES src/sglib-combined/Makefile" ;;
     "src/slre/Makefile") CONFIG_FILES="$CONFIG_FILES src/slre/Makefile" ;;
     "src/st/Makefile") CONFIG_FILES="$CONFIG_FILES src/st/Makefile" ;;
     "src/statemate/Makefile") CONFIG_FILES="$CONFIG_FILES src/statemate/Makefile" ;;

@@ -25,11 +25,7 @@ SUBDIRS = aha-mont64            \
           nsichneu              \
           picojpeg              \
           qrduino               \
-          sglib-arrayquicksort  \
-          sglib-dllist          \
-          sglib-hashtable       \
-          sglib-queue           \
-          sglib-rbtree          \
+          sglib-combined        \
           slre                  \
           st                    \
           statemate             \

@@ -1,5 +1,42 @@
 2019-05-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	Combine all the Simple Generic Library tests into one.
+
+	* configure: Regenerated.
+	* configure.ac: Add sglib-combined and remove
+	sglib-arrayquicksort, sglib-dllist, sglib-hashtable, sglib-queue
+	and sdlib-rbtree throughout.
+	* src/Makefile.am Add sglib-combined and remove
+	sglib-arrayquicksort, sglib-dllist, sglib-hashtable, sglib-queue
+	and sdlib-rbtree as directories.
+	* src/Makefile.in: Regenerated.
+	* src/sglib-arrayquicksort/Makefile.am: Deleted.
+	* src/sglib-arrayquicksort/Makefile.in: Deleted.
+	* src/sglib-arrayquicksort/arrayquicksort.c: Deleted.
+	* src/sglib-arrayquicksort/sglib.h: Deleted.
+	* src/sglib-combined/Makefile.am: Created.
+	* src/sglib-combined/Makefile.in: Generated.
+	* src/sglib-combined/combined.c: Created.
+	* src/sglib-combined/sglib.h: Created.
+	* src/sglib-dllist/Makefile.am: Deleted.
+	* src/sglib-dllist/Makefile.in: Deleted.
+	* src/sglib-dllist/dllist.c: Deleted.
+	* src/sglib-dllist/sglib.h: Deleted.
+	* src/sglib-hashtable/Makefile.am: Deleted.
+	* src/sglib-hashtable/Makefile.in: Deleted.
+	* src/sglib-hashtable/hashtable.c: Deleted.
+	* src/sglib-hashtable/sglib.h: Deleted.
+	* src/sglib-queue/Makefile.am: Deleted.
+	* src/sglib-queue/Makefile.in: Deleted.
+	* src/sglib-queue/queue.c: Deleted.
+	* src/sglib-queue/sglib.h: Deleted.
+	* src/sglib-rbtree/Makefile.am: Deleted.
+	* src/sglib-rbtree/Makefile.in: Deleted.
+	* src/sglib-rbtree/rbtree.c: Deleted.
+	* src/sglib-rbtree/sglib.h: Deleted.
+
+2019-05-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	* src/aha-mont64/mont64.c: Tune LOCAL_SCALE_FACTOR.
 	* src/crc32/crc_32.c: Likewise.
 	* src/huffbench/libhuffbench.c: Likewise.
