@@ -35,18 +35,27 @@ proc beebs_load { file } {
 
     # Wait until we hit start_trigger
     expect {
-      -re ".*stopped.*start_trigger.*" { }
-      -re "Breakpoint.*start_trigger.*" { }
+      -re ".*stopped.*start_trigger.*\n" { }
+      -re "Breakpoint.*start_trigger ()" { }
       timeout {
         unresolved "$file: waiting for start_trigger\n"
         return fail
       }
     }
 
+    # Wait for the prompt
+    expect {
+	-re "(gdb).*" { }
+	timeout {
+	    unresolved "$file: waiting for start_trigger GDB prompt\n"
+	    return fail
+	}
+    }
+
     # Record the cycle count at start_trigger
     send "monitor cyclecount\n"
     expect {
-      -re "(\[0-9\]+)" {
+	-re "(\[0-9\]+)" {
         set start_cycle_count $expect_out(1,string)
       }
       timeout {
@@ -58,18 +67,27 @@ proc beebs_load { file } {
     # Continue and wait for stop_trigger
     send "cont\n"
     expect {
-      -re ".*stopped.*stop_trigger.*" { }
-      -re "Breakpoint.*stop_trigger.*" { }
+      -re ".*stopped.*stop_trigger.*\n" { }
+      -re "Breakpoint.*stop_trigger ()" { }
       timeout {
         unresolved "$file: waiting for stop_trigger\n"
         return fail
       }
     }
 
+    # Wait for the prompt
+    expect {
+	-re "(gdb).*" { }
+	timeout {
+	    unresolved "$file: waiting for stop_trigger GDB prompt\n"
+	    return fail
+	}
+    }
+
     # Record the cycle count at stop_trigger
     send "monitor cyclecount\n"
     expect {
-      -re "(\[0-9\]+)" {
+	-re "(\[0-9\]+)" {
         set stop_cycle_count $expect_out(1,string)
       }
       timeout {

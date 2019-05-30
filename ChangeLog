@@ -1,3 +1,29 @@
+2019-05-30  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	* config/riscv32/chips/picorv32/chip.cfg: Delelted.
+	* config/riscv32/chips/picorv32/chipsupport.c: Delelted.
+	* config/riscv32/chips/picorv32/chipsupport.h: Delelted.
+	* config/riscv32/chips/picorv32/picorv32.ld: Delelted.
+	* config/riscv32/chips/picorv32/picorv32.spec: Delelted.
+	* config/riscv32/chips/ri5cy/chip.cfg: Delelted.
+	* config/riscv32/chips/ri5cy/chipsupport.c: Delelted.
+	* config/riscv32/chips/ri5cy/chipsupport.h: Delelted.
+	* config/riscv32/chips/size-test/chip.cfg: Move to size-test-gcc
+	directory.
+	* config/riscv32/chips/size-test/chipsupport.c: Likewise.
+	* config/riscv32/chips/size-test/chipsupport.h: Likewise.
+	* config/riscv32/chips/size-test-gcc/chip.cfg: Moved from
+	size-test directory and split out LD flags
+	* config/riscv32/chips/size-test-gcc/chipsupport.c: Moved from
+	size-test directory.
+	* config/riscv32/chips/size-test-gcc/chipsupport.h: Likewise.
+	* config/riscv32/chips/size-test-llvm/chip.cfg: Created.
+	* config/riscv32/chips/size-test-llvm/chipsupport.c: Created.
+	* config/riscv32/chips/size-test-llvm/chipsupport.h: Created.
+	* config/riscv32/chips/speed-test/chip.cfg: Split out LD flags
+	* testsuite/config/ri5cyverilator.exp: Correct recognition of
+	cycle count value.
+
 2019-05-28  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	Combine all the Simple Generic Library tests into one.
