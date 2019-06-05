@@ -1,3 +1,10 @@
+2019-06-05  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	* config/riscv32/chips/size-test-gcc/chip.cfg: Specify ABI and
+	-msave-restore.
+	* config/riscv32/chips/size-test-llvm/chip.cfg: Specify ABI.
+	* config/riscv32/chips/speed-test/chip.cfg: Specify ABI.
+
 2019-05-30  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	* config/riscv32/chips/picorv32/chip.cfg: Delelted.
