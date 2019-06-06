@@ -151,6 +151,7 @@ am__recursive_targets = \
   $(am__extra_recursive_targets)
 AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \
 	cscope distdir dist dist-all distcheck
+am__extra_recursive_targets = spell-recursive
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) \
 	$(LISP)config.h.in
 # Read a list of newline-separated strings from the standard input,
@@ -450,6 +451,7 @@ $(am__recursive_targets):
 	if test "$$dot_seen" = "no"; then \
 	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
 	fi; test -z "$$fail"
+spell-local: 
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -814,6 +816,10 @@ ps: ps-recursive
 
 ps-am:
 
+spell: spell-recursive
+
+spell-am: spell-local
+
 uninstall-am:
 
 .MAKE: $(am__recursive_targets) all install-am install-strip
@@ -832,8 +838,8 @@ uninstall-am:
 	install-ps install-ps-am install-strip installcheck \
 	installcheck-am installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am
+	mostlyclean-libtool pdf pdf-am ps ps-am spell-am spell-local \
+	tags tags-am uninstall uninstall-am
 
 .PRECIOUS: Makefile
 

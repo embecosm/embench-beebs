@@ -1,5 +1,58 @@
 2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	Grand cleanup of documentation for Embench.
+
+	The top level README.md is brought into line with Embench and
+	simplified, mostly just pointing at the user manual in the doc
+	directory.  The Texinfo BEEBS manual is replaced by an Asciidoc
+	README, so it displays nicely in GitHub, but can be generated as
+	PDF or HTML.
+
+	* Makefile.in: Regenerated.
+	* README.md: Updated for Embench.
+	* aclocal.m4: Regenerated.
+	* configure: Regenerated.
+	* configure.ac: Add spell as a recursive target
+	* doc/Makefile.am: Rewrite to handle Asciidoc and spell checking
+	* doc/Makefile.in: Regenerated.
+	* doc/README.adoc: Created, based on beebs.texi.
+	* doc/beebs.info: Deleted.
+	* doc/beebs.texi: Deleted.
+	* doc/config.texi: Deleted.
+	* doc/custom.wordlist:
+	* doc/fdl-1.2.texi: Deleted.
+	* doc/mdate-sh: Deleted.
+	* doc/stamp-vti: Deleted.
+	* doc/texinfo.tex: Deleted.
+	* doc/version.texi: Deleted.
+	* src/Makefile.in: Regenerated.
+	* src/aha-mont64/Makefile.in: Regenerated.
+	* src/crc32/Makefile.in: Regenerated.
+	* src/cubic/Makefile.in: Regenerated.
+	* src/edn/Makefile.in: Regenerated.
+	* src/huffbench/Makefile.in: Regenerated.
+	* src/matmult-int/Makefile.in: Regenerated.
+	* src/minver/Makefile.in: Regenerated.
+	* src/nbody/Makefile.in: Regenerated.
+	* src/nettle-aes/Makefile.in: Regenerated.
+	* src/nettle-sha256/Makefile.in: Regenerated.
+	* src/nsichneu/Makefile.in: Regenerated.
+	* src/picojpeg/Makefile.in: Regenerated.
+	* src/qrduino/Makefile.in: Regenerated.
+	* src/sglib-combined/Makefile.in: Regenerated.
+	* src/slre/Makefile.in: Regenerated.
+	* src/st/Makefile.in: Regenerated.
+	* src/statemate/Makefile.in: Regenerated.
+	* src/ud/Makefile.in: Regenerated.
+	* src/wikisort/Makefile.in: Regenerated.
+	* support/Makefile.in: Regenerated.
+	* testsuite/Makefile.in: Regenerated.
+	* testsuite/beebs.test/Makefile.in: Regenerated.
+	* testsuite/config/Makefile.in: Regenerated.
+	* testsuite/lib/Makefile.in: Regenerated.
+
+2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	* config/riscv32/chips/speed-test/chip.cfg: Fix typo in -march,
 	* testsuite/config/ri5cyverilator.exp: Better recognition of cycle
 	counts.
