@@ -6,6 +6,9 @@
    Contributor James Pallister <james.pallister@bristol.ac.uk>
    Contributor Jeremy Bennett <jeremy.bennett@embecosm.com>
 
+   This file is part of Embench and was formerly part of the Bristol/Embecosm
+   Embedded Benchmark Suite.
+
    SPDX-License-Identifier: GPL-3.0-or-later
 
    Code originally from: From http://www.snippets.org/.  This original code is

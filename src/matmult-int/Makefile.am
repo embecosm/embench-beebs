@@ -2,7 +2,9 @@
 #
 # Copyright (C) 2013-2014 Embecosm Limited and University of Bristol
 #
-# This file is part of the Bristol/Embecosm Embedded Benchmark Suite.
+# This file is part of Embench and was formerly part of the Bristol/Embecosm
+# Embedded Benchmark Suite.
+
 #
 # Contributor: James Pallister <james.pallister@bristol.ac.uk>
 #

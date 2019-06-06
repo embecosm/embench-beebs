@@ -2,7 +2,8 @@
 
 # Contributor Andrew Burgess <andrew.burgess@embecosm.com>
 
-# This file is part of BEEBS
+# This file is part of Embench and was formerly part of the Bristol/Embecosm
+# Embedded Benchmark Suite.
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 

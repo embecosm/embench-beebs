@@ -2,7 +2,8 @@
 
    Contributor: James Pallister <james.pallister@bristol.ac.uk>
 
-   This file is part of the Bristol/Embecosm Embedded Benchmark Suite.
+   This file is part of Embench and was formerly part of the Bristol/Embecosm
+   Embedded Benchmark Suite.
 
    SPDX-License-Identifier: GPL-3.0-or-later */
 

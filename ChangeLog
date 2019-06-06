@@ -1,5 +1,164 @@
 2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	Change all header comments to refer to Embench.
+
+	* Makefile.am: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* Makefile.in: Regenerated.
+	* config/default.exp: Change header comment to note this is part
+	of Embench and was formerly part of BEEBS.
+	* config/riscv32/boards/generic/boardsupport.c: Likewise.
+	* config/riscv32/boards/generic/boardsupport.h: Likewise.
+	* config/riscv32/boards/picorv32verilator/boardsupport.c:
+	Likewise.
+	* config/riscv32/boards/picorv32verilator/boardsupport.h:
+	Likewise.
+	* config/riscv32/boards/ri5cyverilator/boardsupport.c: Likewise.
+	* config/riscv32/boards/ri5cyverilator/boardsupport.h: Likewise.
+	* config/riscv32/chips/size-test-gcc/chip.cfg: Likewise.
+	* config/riscv32/chips/size-test-gcc/chipsupport.c: Likewise.
+	* config/riscv32/chips/size-test-gcc/chipsupport.h: Likewise.
+	* config/riscv32/chips/size-test-llvm/chip.cfg: Likewise.
+	* config/riscv32/chips/size-test-llvm/chipsupport.c: Likewise.
+	* config/riscv32/chips/size-test-llvm/chipsupport.h: Likewise.
+	* config/riscv32/chips/speed-test/chip.cfg: Likewise.
+	* config/riscv32/chips/speed-test/chipsupport.c: Likewise.
+	* config/riscv32/chips/speed-test/chipsupport.h: Likewise.
+	* configure.ac: Likewise.
+	* doc/Makefile.am: Likewise.
+	* doc/Makefile.in: Regenerated.
+	* doc/README.adoc: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* src/Makefile.am: Likewise.
+	* src/Makefile.in: Regenerated.
+	* src/aha-mont64/Makefile.am: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/aha-mont64/Makefile.in: Regenerated.
+	* src/aha-mont64/mont64.c: Change header comment to note this is
+	part of Embench and was formerly part of BEEBS.
+	* src/common.mk.am: Likewise.
+	* src/crc32/Makefile.am: Likewise.
+	* src/crc32/Makefile.in: Regenerated.
+	* src/crc32/crc_32.c: Change header comment to note this is part
+	of Embench and was formerly part of BEEBS.
+	* src/cubic/Makefile.am: Likewise.
+	* src/cubic/Makefile.in: Regenerated.
+	* src/cubic/basicmath_small.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/cubic/libcubic.c: Likewise.
+	* src/cubic/pi.h: Likewise.
+	* src/cubic/snipmath.h: Likewise.
+	* src/cubic/sniptype.h: Likewise.
+	* src/edn/Makefile.am: Likewise.
+	* src/edn/Makefile.in: Regenerated.
+	* src/edn/libedn.c: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* src/huffbench/Makefile.am: Likewise.
+	* src/huffbench/Makefile.in: Regenerated.
+	* src/huffbench/libhuffbench.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/matmult-int/Makefile.am: Likewise.
+	* src/matmult-int/Makefile.in: Regenerated.
+	* src/matmult-int/matmult-int.c: Change header comment to note
+	this is part of Embench and was formerly part of BEEBS.
+	* src/minver/Makefile.am: Likewise.
+	* src/minver/Makefile.in: Regenerated.
+	* src/minver/libminver.c: Change header comment to note this is
+	part of Embench and was formerly part of BEEBS.
+	* src/nbody/Makefile.am: Likewise.
+	* src/nbody/Makefile.in: Regenerated.
+	* src/nbody/nbody.c: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* src/nettle-aes/Makefile.am: Likewise.
+	* src/nettle-aes/Makefile.in: Regenerated.
+	* src/nettle-aes/nettle-aes.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/nettle-sha256/Makefile.am: Likewise.
+	* src/nettle-sha256/Makefile.in: Regenerated.
+	* src/nettle-sha256/nettle-sha256.c: Change header comment to note
+	this is part of Embench and was formerly part of BEEBS.
+	* src/nsichneu/Makefile.am: Likewise.
+	* src/nsichneu/Makefile.in: Regenerated.
+	* src/nsichneu/libnsichneu.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/picojpeg/Makefile.am: Likewise.
+	* src/picojpeg/Makefile.in: Regenerated.
+	* src/picojpeg/libpicojpeg.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/picojpeg/picojpeg.h: Likewise.
+	* src/picojpeg/picojpeg_test.c: Likewise.
+	* src/qrduino/Makefile.am: Likewise.
+	* src/qrduino/Makefile.in: Regenerated.
+	* src/qrduino/ecctable.h: Change header comment to note this is
+	part of Embench and was formerly part of BEEBS.
+	* src/qrduino/qrbits.h: Likewise.
+	* src/qrduino/qrencode.c: Likewise.
+	* src/qrduino/qrencode.h: Likewise.
+	* src/qrduino/qrframe.c: Likewise.
+	* src/qrduino/qrtest.c: Likewise.
+	* src/sglib-combined/Makefile.am: Likewise.
+	* src/sglib-combined/Makefile.in: Regenerated.
+	* src/sglib-combined/combined.c: Change header comment to note
+	this is part of Embench and was formerly part of BEEBS.
+	* src/sglib-combined/sglib.h: Likewise.
+	* src/slre/Makefile.am: Likewise.
+	* src/slre/Makefile.in: Regenerated.
+	* src/slre/libslre.c: Change header comment to note this is part
+	of Embench and was formerly part of BEEBS.
+	* src/slre/slre.h: Likewise.
+	* src/st/Makefile.am: Likewise.
+	* src/st/Makefile.in: Regenerated.
+	* src/st/libst.c: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* src/statemate/Makefile.am: Likewise.
+	* src/statemate/Makefile.in: Regenerated.
+	* src/statemate/libstatemate.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* src/ud/Makefile.am: Likewise.
+	* src/ud/Makefile.in: Regenerated.
+	* src/ud/libud.c: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* src/wikisort/Makefile.am: Likewise.
+	* src/wikisort/Makefile.in: Regenerated.
+	* src/wikisort/libwikisort.c: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* support/Makefile.am: Likewise.
+	* support/Makefile.in: Regenerated.
+	* support/beebsc.c: Change header comment to note this is part of
+	Embench and was formerly part of BEEBS.
+	* support/beebsc.h: Likewise.
+	* support/board.c: Likewise.
+	* support/chip.c: Likewise.
+	* support/dummy-crt0.c: Likewise.
+	* support/dummy-libc.c: Likewise.
+	* support/dummy-libgcc.c: Likewise.
+	* support/dummy-libm.c: Likewise.
+	* support/main.c: Likewise.
+	* support/support.h: Likewise.
+	* testsuite/Makefile.am: Likewise.
+	* testsuite/Makefile.in: Regenerated.
+	* testsuite/beebs-conf.exp: Change header comment to note this is
+	part of Embench and was formerly part of BEEBS.
+	* testsuite/beebs.test/Makefile.am: Likewise.
+	* testsuite/beebs.test/Makefile.in: Regenerated.
+	* testsuite/beebs.test/execute.exp: Change header comment to note
+	this is part of Embench and was formerly part of BEEBS.
+	* testsuite/beebs.test/size.exp: Likewise.
+	* testsuite/config/Makefile.am: Likewise.
+	* testsuite/config/Makefile.in: Regenerated.
+	* testsuite/config/generic.exp: Change header comment to note this
+	is part of Embench and was formerly part of BEEBS.
+	* testsuite/config/none.exp: Likewise.
+	* testsuite/config/ri5cyverilator.exp: Likewise.
+	* testsuite/lib/Makefile.am: Likewise.
+	* testsuite/lib/Makefile.in: Regenerated.
+	* testsuite/lib/beebs.exp: Change header comment to note this is
+	part of Embench and was formerly part of BEEBS.
+	* testsuite/lib/mageec-wand.exp: Likewise.
+	* testsuite/lib/perf-stat.exp: Likewise.
+
+2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	Add missing OpenChain headers.
 
 	* config/riscv32/chips/size-test-gcc/chip.cfg: Add missing SPDX
