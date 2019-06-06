@@ -13,13 +13,13 @@ and Trevor Mudge (see https://tmt.knect365.com/risc-v-workshop-zurich/agenda/2#s
 
 The benchmarks are largely derived from the Bristol/Embecosm Embedded
 Benchmark Suite (BEEBS, see http://beebs.eu), which in turn draws its material
-from various earlier projects.  A full description and user manual is in the [`doc` directory](../blob/master/doc/README.adoc).
+from various earlier projects.  A full description and user manual is in the [`doc` directory](./blob/master/doc/README.adoc).
 
 ## Using the benchmarks
 
 The benchmarks can be used to yield a single consistent score for the
 performance of a platform and its compiler tool chain.  The mechanism for this
-is described in the [user manual](../blob/master/doc/README.adoc).
+is described in the [user manual](./blob/master/doc/README.adoc).
 
 - The benchmarks should all compile to fit in 64kB of program space and use no
   more than 16kB of RAM.
@@ -47,20 +47,20 @@ DejaGnu to run them.  This will be replaced by Python scripts for platform
 portability in a future release.  The following are the key top level
 directories.
 
-- [`config`](../blob/master/config): containing a directory for each
+- [`config`](./blob/master/config): containing a directory for each
   architecture supported, and within that directory subdirectories for board
   and cpu descriptions.  Configuation data can be provided for individual CPUs
   and individual boards.
 
-- [`doc`](../blob/master/doc): The user manual for Embench.
+- [`doc`](./blob/master/doc): The user manual for Embench.
 
-- [`src`](../blob/master/src): The source for the benchmarks, one directory
+- [`src`](./blob/master/src): The source for the benchmarks, one directory
   per benchmark.
 
-- [`support`](../blob/master/support): The generic wrapper code for
+- [`support`](./blob/master/support): The generic wrapper code for
   benchmarks, including substitutes for some library and emulation functions.
 
-- [`testsuite`](../blob/master/testsuite): The DejanGnu scripts to run the
+- [`testsuite`](./blob/master/testsuite): The DejanGnu scripts to run the
   benchmarks
 
 ## Licensing
