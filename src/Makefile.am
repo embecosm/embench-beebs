@@ -8,10 +8,6 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-# Remember that ctl, matmult, sglib-arraysort and trio are not benchmarks
-# themselves, but the frameworks from which others are created, so their
-# subdirs are only for generating the distribution files
-
 SUBDIRS = aha-mont64            \
           crc32                 \
           cubic                 \

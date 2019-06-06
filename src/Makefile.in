@@ -23,10 +23,6 @@
 # This file is part of the Bristol/Embecosm Embedded Benchmark Suite.
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-
-# Remember that ctl, matmult, sglib-arraysort and trio are not benchmarks
-# themselves, but the frameworks from which others are created, so their
-# subdirs are only for generating the distribution files
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \

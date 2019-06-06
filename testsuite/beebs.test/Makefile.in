@@ -22,6 +22,7 @@
 #
 # This file is part of the Bristol/Embecosm Embedded Benchmark Suite.
 #
+# SPDX-License-Identifier: GPL-3.0-or-later
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \

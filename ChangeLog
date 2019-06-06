@@ -1,5 +1,29 @@
 2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
+	Add missing OpenChain headers.
+
+	* config/riscv32/chips/size-test-gcc/chip.cfg: Add missing SPDX
+	header.
+	* config/riscv32/chips/size-test-gcc/chipsupport.c: Likewise.
+	* config/riscv32/chips/size-test-gcc/chipsupport.h: Likewise.
+	* config/riscv32/chips/size-test-llvm/chip.cfg: Likewise.
+	* config/riscv32/chips/size-test-llvm/chipsupport.c: Likewise.
+	* config/riscv32/chips/size-test-llvm/chipsupport.h: Likewise.
+	* config/riscv32/chips/speed-test/chip.cfg: Likewise.
+	* config/riscv32/chips/speed-test/chipsupport.c: Likewise.
+	* config/riscv32/chips/speed-test/chipsupport.h: Likewise.
+	* src/Makefile.am: Remove redundant comment.
+	* src/Makefile.in: Regenerated.
+	* support/arc-millicode.S: Deleted.
+	* testsuite/beebs.test/Makefile.am: Add missing SPDX header.
+	* testsuite/beebs.test/Makefile.in: Regenerated.
+	* testsuite/config/Makefile.am: Add missing SPDX header.
+	* testsuite/config/Makefile.in: Regenerated.
+	* testsuite/lib/Makefile.am: Add missing SPDX header.
+	* testsuite/lib/Makefile.in: Regenerated.
+
+2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
 	* README.md: Correct internal cross-references again.
 
 2019-06-06  Jeremy Bennett  <jeremy.bennett@embecosm.com>
